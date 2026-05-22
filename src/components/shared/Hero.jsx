@@ -53,7 +53,7 @@ const Hero = () => {
           </div>
 
           {/* Floating Card 1 */}
-          <div className="absolute top-10 left-0 bg-white shadow-lg p-3 rounded-xl">
+          <div className="absolute top-10 left-0 md:left-5 bg-white shadow-lg p-3 rounded-xl">
             🐶 Dogs
           </div>
 
@@ -63,7 +63,7 @@ const Hero = () => {
           </div>
 
           {/* Floating Card 3 */}
-          <div className="absolute top-1/2 right-[-20px] bg-orange-500 text-white px-3 py-2 rounded-xl">
+          <div className="absolute top-1/2 right-0 bg-orange-500 text-white px-3 py-2 rounded-xl">
             100+ Ready
           </div>
 

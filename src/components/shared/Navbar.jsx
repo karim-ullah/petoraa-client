@@ -19,11 +19,16 @@ const Navbar = () => {
         hover:border-b-2 border-accent`}>
         <Link href="all-pets">All Pets</Link>
       </li>
+      <li className={`font-medium text-sm 
+        ${pathName === '/add-pet' ? 'border-b-2 border-accent' : ''}
+        hover:border-b-2 border-accent`}>
+        <Link href="add-pet">Add Pet</Link>
+      </li>
     </>
   );
   return (
-    <nav className="sticky top-0 z-40 w-full border-b border-separator bg-background/70 backdrop-blur-lg">
-      <header className="max-w-7xl mx-auto flex h-12 items-center justify-between px-6">
+    <nav className="sticky top-0 z-40 w-full border-b border-separator bg-background/60 backdrop-blur-lg">
+      <header className="max-w-7xl mx-auto flex h-14 items-center justify-between px-6">
         <div className="flex items-center gap-4">
           <button
             className="md:hidden"
