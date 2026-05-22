@@ -66,7 +66,7 @@ const Navbar = () => {
           
           <Button
             size="sm"
-            className={"bg-accent px-5 py-1 font-semibold text-sm"}
+            className={"bg-accent px-5 py-1 font-semibold text-sm rounded-lg"}
           >
             <ArrowRightToSquare></ArrowRightToSquare>
             <Link href={'/login'}>Login</Link>
