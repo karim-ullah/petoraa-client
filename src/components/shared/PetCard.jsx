@@ -1,13 +1,13 @@
 import Image from "next/image";
 
-export default function PetCard() {
+export default function PetCard({pet}) {
   return (
-    <div className="max-w-sm bg-white rounded-2xl shadow-lg overflow-hidden border hover:shadow-2xl transition duration-300">
+    <div className=" bg-white rounded-2xl shadow-lg overflow-hidden border hover:shadow-2xl transition duration-300">
 
       {/* Pet Image */}
       <div className="relative w-full h-64">
         <Image
-          src="https://images.unsplash.com/photo-1517849845537-4d257902454a"
+          src={pet.imageUrl}
           alt="Dog"
           fill
           className="object-cover"
@@ -20,23 +20,23 @@ export default function PetCard() {
         {/* Pet Name */}
         <div className="flex items-center justify-between">
           <h2 className="text-2xl font-bold text-gray-800">
-            Bella
+            {pet.petName}
           </h2>
 
           <span className="bg-orange-100 text-orange-500 text-sm px-3 py-1 rounded-full">
-            Dog
+            {pet.species}
           </span>
         </div>
 
         {/* Description */}
         <p className="text-gray-600 mt-3">
-          Friendly and playful pet looking for a loving home.
+          {pet.description}
         </p>
 
         {/* Small Info */}
         <div className="flex gap-4 mt-4 text-sm text-gray-500">
-          <p>🎂 2 Years</p>
-          <p>📍 Dhaka</p>
+          <p>🎂 {pet.age}</p>
+          <p>📍 {pet.location}</p>
         </div>
 
         {/* Buttons */}

@@ -60,8 +60,10 @@ const Navbar = () => {
             </svg>
           </button>
           <div className="font-semibold text-2xl">
+            <Link href={'/'}>
             <span className="text-accent">Peto</span>
             <span className="text-secondary">Raa</span>
+            </Link>
           </div>
         </div>
         <ul className="hidden items-center gap-4 md:flex">{links}</ul>
