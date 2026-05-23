@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function PetCard({pet}) {
   return (
@@ -42,7 +43,7 @@ export default function PetCard({pet}) {
         {/* Buttons */}
         <div className="flex gap-3 mt-6">
           <button className="flex-1 border border-orange-500 text-orange-500 py-2 rounded-xl hover:bg-orange-50 transition">
-            View Details
+            <Link href={`/all-pets/${pet._id}`}>View Details</Link>
           </button>
 
           <button className="flex-1 bg-orange-500 text-white py-2 rounded-xl hover:bg-orange-600 transition">

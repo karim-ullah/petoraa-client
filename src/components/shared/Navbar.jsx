@@ -17,7 +17,7 @@ const Navbar = () => {
       <li className={`font-medium text-sm 
         ${pathName === '/all-pets' ? 'border-b-2 border-accent' : ''}
         hover:border-b-2 border-accent`}>
-        <Link href="all-pets">All Pets</Link>
+        <Link href="/all-pets">All Pets</Link>
       </li>
       <li className={`font-medium text-sm 
         ${pathName === '/add-pet' ? 'border-b-2 border-accent' : ''}
