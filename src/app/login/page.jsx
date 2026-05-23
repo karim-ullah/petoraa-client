@@ -11,6 +11,7 @@ import {
 } from "@heroui/react";
 
 import { toast } from "react-hot-toast";
+import { authClient } from "@/lib/auth-client";
 
 export default function LoginPage() {
 
@@ -30,18 +31,17 @@ export default function LoginPage() {
 
     try {
 
-      // Example Login Logic
-      console.log({ email, password });
+      const {data, error} = await authClient.signIn.email({
+        email,
+        password
+      })
 
-      // Fake Success
-      const success = true;
-
-      if (success) {
+     
         toast.success("Login Successful");
 
         // Redirect after login
         router.push("/");
-      }
+      
 
     } catch (error) {
 
