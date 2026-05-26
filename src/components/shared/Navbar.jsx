@@ -1,27 +1,47 @@
 "use client";
 import { useState } from "react";
-import { Button } from "@heroui/react";
+import { Avatar, Button } from "@heroui/react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import {ArrowRightToSquare} from '@gravity-ui/icons';
+import { ArrowRightToSquare } from "@gravity-ui/icons";
+import { authClient } from "@/lib/auth-client";
+import toast from "react-hot-toast";
+
 const Navbar = () => {
+
+  const {data:session} = authClient.useSession()
+  const user = session?.user
+  console.log(user, 'user geting');
+
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const pathName = usePathname()
+  const pathName = usePathname();
+
+  const handleLogOut = async()=>{
+  await authClient.signOut()
+  toast.success('Logout Successfull')
+  }
+
   const links = (
     <>
-      <li className={`font-medium text-sm
-        ${pathName === '/' ? 'border-b-2 border-accent' : ''}
-        hover:border-b-2 border-accent`}>
+      <li
+        className={`font-medium text-sm
+        ${pathName === "/" ? "border-b-2 border-accent" : ""}
+        hover:border-b-2 border-accent`}
+      >
         <Link href="/">Home</Link>
       </li>
-      <li className={`font-medium text-sm 
-        ${pathName === '/all-pets' ? 'border-b-2 border-accent' : ''}
-        hover:border-b-2 border-accent`}>
+      <li
+        className={`font-medium text-sm 
+        ${pathName === "/all-pets" ? "border-b-2 border-accent" : ""}
+        hover:border-b-2 border-accent`}
+      >
         <Link href="/all-pets">All Pets</Link>
       </li>
-      <li className={`font-medium text-sm 
-        ${pathName === '/add-pet' ? 'border-b-2 border-accent' : ''}
-        hover:border-b-2 border-accent`}>
+      <li
+        className={`font-medium text-sm 
+        ${pathName === "/add-pet" ? "border-b-2 border-accent" : ""}
+        hover:border-b-2 border-accent`}
+      >
         <Link href="add-pet">Add Pet</Link>
       </li>
     </>
@@ -60,32 +80,38 @@ const Navbar = () => {
             </svg>
           </button>
           <div className="font-semibold text-2xl">
-            <Link href={'/'}>
-            <span className="text-accent">Peto</span>
-            <span className="text-secondary">Raa</span>
+            <Link href={"/"}>
+              <span className="text-accent">Peto</span>
+              <span className="text-secondary">Raa</span>
             </Link>
           </div>
         </div>
         <ul className="hidden items-center gap-4 md:flex">{links}</ul>
 
         <div>
-          
-          
-          <Button
+
+          {
+            
+           user? <div className="flex gap-2 items-center">
+            <Avatar>
+        <Avatar.Image alt="John Doe" src={user?.image} />
+        <Avatar.Fallback>JD</Avatar.Fallback>
+      </Avatar>
+
+      <Button size="sm" onClick={handleLogOut} className={"bg-accent px-5 py-1 font-semibold text-sm rounded-lg"}>Logout</Button>
+           </div> :
+            <Button
             size="sm"
             className={"bg-accent px-5 py-1 font-semibold text-sm rounded-lg"}
           >
             <ArrowRightToSquare></ArrowRightToSquare>
-            <Link href={'/login'}>Login</Link>
-          </Button>
-         
+            <Link href={"/login"}>Login</Link>
+          </Button>}
         </div>
       </header>
       {isMenuOpen && (
         <div className="border-t border-separator md:hidden">
-          <ul className="flex flex-col gap-2 p-4">
-            {links}
-          </ul>
+          <ul className="flex flex-col gap-2 p-4">{links}</ul>
         </div>
       )}
     </nav>

@@ -28,7 +28,7 @@ export default function SignupPage() {
 
     const name = form.get("name");
     const email = form.get("email");
-    const photoURL = form.get("photoURL");
+    const photoUrl = form.get("photoUrl");
     const password = form.get("password");
     const confirmPassword = form.get("confirmPassword");
 
@@ -63,8 +63,7 @@ export default function SignupPage() {
         name,
         email,
         password,
-        photoURL,
-        confirmPassword,
+        image: photoUrl,
       })
 
       toast.success("Account Created Successfully");
@@ -146,8 +145,8 @@ export default function SignupPage() {
               </label>
 
               <Input
-                type="text"
-                name="photoURL"
+                type="url"
+                name="photoUrl"
                 placeholder="Enter photo URL"
                 variant="bordered"
                 className="w-full"
