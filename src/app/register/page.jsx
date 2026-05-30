@@ -26,11 +26,8 @@ export default function SignupPage() {
 
     const form = new FormData(e.currentTarget);
 
-    const name = form.get("name");
-    const email = form.get("email");
-    const photoUrl = form.get("photoUrl");
-    const password = form.get("password");
-    const confirmPassword = form.get("confirmPassword");
+    const formData = Object.fromEntries(form.entries())
+    const {name, email,password,confirmPassword, photoUrl} = formData
 
     // Password Validation
     if (password.length < 6) {
@@ -57,27 +54,25 @@ export default function SignupPage() {
       return;
     }
 
-    try {
 
-      const {data, error} = await authClient.signUp.email({
+    const {data, error} = await authClient.signUp.email({
         name,
         email,
         password,
         image: photoUrl,
       })
+      if(data){
+        
+        toast.success("Account Created Successfully");
+        router.push('/login')
+      }
 
-      toast.success("Account Created Successfully");
+      if(error){
+        toast.error('Not Created Account')
+      }
 
-      router.push("/login");
 
-    } catch (error) {
-
-      toast.error("Something went wrong");
-
-    } finally {
-
-      setLoading(false);
-    }
+    
   };
 
   return (

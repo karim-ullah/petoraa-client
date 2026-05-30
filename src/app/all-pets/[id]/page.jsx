@@ -1,12 +1,35 @@
 import AdoptionForm from "@/components/detailspage/AdoptionForm";
+import { auth } from "@/lib/auth";
+import { headers } from "next/headers";
+import Image from "next/image";
 
 
 const PetDetailsPage = async({params})=> {
 
-    const {id} = await params
+    const session = await auth.api.getSession({
+      headers: await headers()
+    })
+    const user = session?.user
+    // console.log(user);
 
-  const res = await fetch(`http://localhost:5000/pets/${id}`)
+    const {id} = await params
+    const {token} = await auth.api.getToken({
+      headers: await headers()
+    })
+
+    // console.log(token);
+
+
+  const res = await fetch(`http://localhost:5000/pet/${id}`,{
+    headers:{
+      authorization: `Bearer ${token}`
+    }
+  })
   const pet = await res.json()
+
+
+  const isOwner = pet.userId === user.id
+  
 
   
 
@@ -22,9 +45,11 @@ const PetDetailsPage = async({params})=> {
         <div className="lg:col-span-2 bg-white rounded-2xl shadow-lg overflow-hidden">
 
           {/* Image */}
-          <img
+          <Image
             src={pet.imageUrl}
             alt={pet.petName}
+            width={100}
+            height={400}
             className="w-full h-[400px] object-cover"
           />
 
@@ -95,7 +120,16 @@ const PetDetailsPage = async({params})=> {
         </div>
 
         {/* Right Side - Adoption Form */}
-        <AdoptionForm></AdoptionForm>
+
+
+      {
+        isOwner ? <div>
+          this is your added pet 
+        </div>
+        :
+        <AdoptionForm pet = {pet}></AdoptionForm>
+      }
+
 
       </div>
     </div>

@@ -20,52 +20,35 @@ export default function LoginPage() {
   const [loading, setLoading] = useState(false);
 
   const handleLogin = async (e) => {
-    e.preventDefault();
+    e.preventDefault()
+    const formData = new FormData(e.target)
+    const dataForm = Object.fromEntries(formData.entries())
 
-    setLoading(true);
+    console.log(dataForm.email);
 
-    const form = new FormData(e.currentTarget);
+    const {data, error} = await authClient.signIn.email({
+      email: dataForm.email,
+      password: dataForm.password,
+      rememberMe: true,
+    })
 
-    const email = form.get("email");
-    const password = form.get("password");
+    console.log(data);
 
-    try {
-
-      const {data, error} = await authClient.signIn.email({
-        email,
-        password
-      })
-
-     
-        toast.success("Login Successful");
-
-        // Redirect after login
-        router.push("/");
-      
-
-    } catch (error) {
-
-      toast.error("Invalid Email or Password");
-
-    } finally {
-      setLoading(false);
+    if(data){
+      toast.success('Login Success')
+      router.push('/')
     }
-  };
+    if(error){
+      toast.error('Email or Password is not valid')
+    }
 
+    
+  }
+
+    
   const handleGoogleLogin = async () => {
 
-    try {
-
-      // Google Login Logic Here
-      toast.success("Google Login Successful");
-
-      router.push("/");
-
-    } catch (error) {
-
-      toast.error("Google Login Failed");
-
-    }
+   
   };
 
   return (

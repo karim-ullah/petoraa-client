@@ -1,25 +1,55 @@
 "use client";
-import { useState } from "react";
-import { Avatar, Button } from "@heroui/react";
+import { useEffect, useRef, useState } from "react";
+import { Avatar, Button, Separator } from "@heroui/react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { ArrowRightToSquare } from "@gravity-ui/icons";
+import { redirect, usePathname } from "next/navigation";
+import { ArrowRightToSquare, ChevronDown } from "@gravity-ui/icons";
 import { authClient } from "@/lib/auth-client";
 import toast from "react-hot-toast";
+import Image from "next/image";
 
 const Navbar = () => {
+  const { data: session } = authClient.useSession();
+  const user = session?.user;
 
-  const {data:session} = authClient.useSession()
-  const user = session?.user
-  console.log(user, 'user geting');
+  // console.log(user, "user geting");
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isDashOpen, setIsDashOpen] = useState(false);
   const pathName = usePathname();
 
-  const handleLogOut = async()=>{
-  await authClient.signOut()
-  toast.success('Logout Successfull')
-  }
+  const handleLogOut = async () => {
+    await authClient.signOut();
+    toast.success("Logout Successfull");
+    redirect("/");
+  };
+
+  const handleDashboard = (e) => {
+    setIsDashOpen(!isDashOpen);
+    // if(e.target){
+    //   setIsDashOpen(false)
+    // }
+  };
+
+  //   const dashboardRef = useRef(null);
+
+  //   useEffect(() => {
+  //   const handleClickOutside = (event) => {
+  //     if (
+  //       dashboardRef.current &&
+  //       !dashboardRef.current.contains(event.target)
+  //     ) {
+  //       setIsDashOpen(false);
+  //     }
+  //   };
+
+  //   // document.addEventListener("mousedown", handleClickOutside);
+
+  //   return () => {
+  //     // document.removeEventListener("mousedown", handleClickOutside);
+  //     handleClickOutside
+  //   };
+  // }, []);
 
   const links = (
     <>
@@ -42,7 +72,7 @@ const Navbar = () => {
         ${pathName === "/add-pet" ? "border-b-2 border-accent" : ""}
         hover:border-b-2 border-accent`}
       >
-        <Link href="add-pet">Add Pet</Link>
+        <Link href="/add-pet">Add Pet</Link>
       </li>
     </>
   );
@@ -89,26 +119,84 @@ const Navbar = () => {
         <ul className="hidden items-center gap-4 md:flex">{links}</ul>
 
         <div>
+          {user ? (
+            <div className="relative">
+              <div
+                onClick={handleDashboard}
+                className="flex items-center justify-center gap-1 cursor-pointer"
+              >
+                <Avatar>
+                  <Avatar.Image alt="John Doe" src={user?.image} />
+                  <Avatar.Fallback>JD</Avatar.Fallback>
+                </Avatar>
+                <h3>{user?.name}</h3>
+                <ChevronDown
+                  className={`${isDashOpen ? "rotate-0" : "rotate-180"}`}
+                ></ChevronDown>
+              </div>
 
-          {
-            
-           user? <div className="flex gap-2 items-center">
-            <Avatar>
-        <Avatar.Image alt="John Doe" src={user?.image} />
-        <Avatar.Fallback>JD</Avatar.Fallback>
-      </Avatar>
+              {isDashOpen && (
+                <div className="absolute right-0 top-14 w-72 bg-white border border-gray-200 rounded-2xl shadow-xl p-5 z-50">
+                  {/* User Info */}
+                  <div className="flex items-center gap-4">
+                    <Image
+                      src={user?.image || "https://i.pravatar.cc/100"}
+                      alt={user?.name}
+                      width={56}
+                      height={56}
+                      className="w-14 h-14 rounded-full object-cover border"
+                    />
 
-      <Button size="sm" onClick={handleLogOut} className={"bg-accent px-5 py-1 font-semibold text-sm rounded-lg"}>Logout</Button>
-           </div> :
+                    <div>
+                      <h2 className="font-semibold text-lg text-gray-800">
+                        {user?.name}
+                      </h2>
+
+                      <p className="text-sm text-gray-500">{user?.email}</p>
+                    </div>
+                  </div>
+
+                  {/* Divider */}
+                  <div className="my-4 border-t"></div>
+
+                  {/* Menu Items */}
+                  <div className="flex flex-col gap-2">
+                    <Link
+                      href={`/dashboard/my-requests`}
+                      className="px-4 py-3 rounded-xl hover:bg-orange-50 text-gray-700 font-medium transition"
+                    >
+                      Dashboard
+                    </Link>
+
+                    <Link
+                      href="/profile"
+                      className="px-4 py-3 rounded-xl hover:bg-orange-50 text-gray-700 font-medium transition"
+                    >
+                      Profile
+                    </Link>
+
+                    <button
+                      onClick={handleLogOut}
+                      className="w-full text-left px-4 py-3 rounded-xl bg-orange-500 hover:bg-orange-600 text-white font-semibold transition"
+                    >
+                      Logout
+                    </button>
+                  </div>
+                </div>
+              )}
+            </div>
+          ) : (
             <Button
-            size="sm"
-            className={"bg-accent px-5 py-1 font-semibold text-sm rounded-lg"}
-          >
-            <ArrowRightToSquare></ArrowRightToSquare>
-            <Link href={"/login"}>Login</Link>
-          </Button>}
+              size="sm"
+              className={"bg-accent px-5 py-1 font-semibold text-sm rounded-lg"}
+            >
+              <ArrowRightToSquare></ArrowRightToSquare>
+              <Link href={"/login"}>Login</Link>
+            </Button>
+          )}
         </div>
       </header>
+
       {isMenuOpen && (
         <div className="border-t border-separator md:hidden">
           <ul className="flex flex-col gap-2 p-4">{links}</ul>
