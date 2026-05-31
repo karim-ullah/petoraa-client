@@ -7,6 +7,7 @@ import toast from "react-hot-toast";
 import { redirect } from "next/navigation";
 import DeleteAlert from "./DeleteAlert";
 import Image from "next/image";
+import RequestAlert from "./RequestAlert";
 
 export default function PetCard({ pet, token }) {
   return (
@@ -45,11 +46,8 @@ export default function PetCard({ pet, token }) {
         {/* Main Button */}
 
         <div className="grid grid-cols-2 gap-2 w-full">
-          <Link href={`/dashboard/requests/${pet?._id}`} className="w-full">
-            <Button color="warning" fullWidth>
-              <ListUl /> Requests
-            </Button>
-          </Link>
+          
+          <RequestAlert pet = {pet}></RequestAlert>
 
           <Button variant="outline" fullWidth>
             <Link
