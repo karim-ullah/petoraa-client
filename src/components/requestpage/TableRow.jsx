@@ -1,8 +1,26 @@
+'use client'
 import { Eye, TrashBin } from "@gravity-ui/icons";
 import { Button, Table } from "@heroui/react";
 import Link from "next/link";
+import { redirect } from "next/navigation";
+import toast from "react-hot-toast";
 
-const TableRow = ({pet}) => {
+const TableRow = ({pet, token}) => {
+  const handleDelete =async()=>{
+    const res = await fetch(`http://localhost:5000/adoptions/${pet._id}`,{
+      method: 'DELETE',
+      headers: {
+        authorization : `Bearer ${token}`
+      }
+
+    })
+
+    const data = await res.json()
+    if(data){
+      toast.success('Deleted successfully')
+      redirect('/dashboard/my-requests')
+    }
+  }
   return (
     <Table.Row>
       <Table.Cell>{pet.petName}</Table.Cell>
@@ -14,7 +32,7 @@ const TableRow = ({pet}) => {
           
           <Link href={`/all-pets/${pet.petId}`}><Eye></Eye></Link>
         </Button>
-        <Button size="sm" variant="outline">
+        <Button size="sm" variant="outline" onClick={handleDelete}>
         
           <TrashBin></TrashBin>
         </Button>

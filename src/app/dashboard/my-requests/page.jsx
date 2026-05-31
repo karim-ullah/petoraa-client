@@ -8,6 +8,10 @@ const MyRequestsPage = async () => {
     headers: await headers(),
   });
   const user = session?.user;
+
+  const {token} = await auth.api.getToken({
+    headers: await headers()
+  })
   const res = await fetch(`http://localhost:5000/adoptions/${user?.id}`);
   const pets = await res.json();
   return (
@@ -36,7 +40,7 @@ const MyRequestsPage = async () => {
               <Table.Body>
 
                 {
-                    pets.map(pet => <TableRow key={pet._id} pet = {pet}></TableRow>)
+                    pets.map(pet => <TableRow key={pet._id} pet = {pet} token ={token}></TableRow>)
                 }
                 
 
