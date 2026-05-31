@@ -22,7 +22,7 @@ const MyListing = async () => {
   const pets = await res.json();
 //   console.log(pets, 'listing page');
   return (
-    <div className="px-5 py-5">
+    <div className="pl-5 py-5">
       {/* Heading */}
       <div>
         <h1 className="font-bold text-3xl">
@@ -60,7 +60,7 @@ const MyListing = async () => {
 
       <div className="grid grid-cols-3 gap-3 py-5">
         {
-            pets?.map(pet => <PetListingCard key={pet._id} pet ={pet}></PetListingCard>)
+            pets.map(pet => <PetListingCard key={pet._id} pet ={pet} token = {token}></PetListingCard>)
         }
       </div>
     </div>

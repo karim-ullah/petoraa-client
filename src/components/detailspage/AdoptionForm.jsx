@@ -4,40 +4,42 @@ import { authClient } from "@/lib/auth-client";
 import toast from "react-hot-toast";
 
 const AdoptionForm = ({ pet }) => {
-
-  const {data:session} = authClient.useSession()
-  const user = session?.user
+  const { data: session } = authClient.useSession();
+  const user = session?.user;
 
   // console.log(user);
 
-  const handleSubmit = async(e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const form = new FormData(e.target)
-    const formData = Object.fromEntries(form.entries())
-    formData.userId = user?.id
-    formData.status = 'pending'
+    const id = pet._id
+    const today = new Date();
+    const currentDate = `${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()}`
+    const form = new FormData(e.target);
+    const formData = Object.fromEntries(form.entries());
+    formData.userId = user?.id;
+    formData.status = "pending";
+    formData.requestDate = currentDate
+    formData.petId = id
 
-    const res = await fetch('http://localhost:5000/adoptions', {
-      method: 'POST',
+    const res = await fetch("http://localhost:5000/adoptions", {
+      method: "POST",
       headers: {
-        'Content-Type' : 'application/json',
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify(formData)
-    })
+      body: JSON.stringify(formData),
+    });
 
-    const data = await res.json()
-    console.log(data, 'data');
+    const data = await res.json();
+    console.log(data, "data");
 
-    if(data.insertedId){
-     return toast.success('Adoption request added successfully')
+    if (data.insertedId) {
+      return toast.success("Adoption request added successfully");
     }
 
-    if(!data.success){
-      toast.error(data.message)
-      return
+    if (!data.success) {
+      toast.error(data.message);
+      return;
     }
-
-    
   };
   return (
     <div className="bg-white rounded-2xl shadow-lg p-6 h-fit sticky top-10">

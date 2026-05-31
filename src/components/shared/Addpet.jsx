@@ -1,6 +1,8 @@
 'use client';
 
 import { authClient } from "@/lib/auth-client";
+import { redirect } from "next/navigation";
+import toast from "react-hot-toast";
 const Addpet = () => {
      const {data:session} = authClient.useSession()
   const user = session?.user
@@ -25,7 +27,8 @@ const Addpet = () => {
     })
     const data = await res.json()
     if(data){
-      alert('pet added successfully')
+      toast.success('pet added successfully')
+      redirect('/dashboard/my-listing')
     }
   };
     return (
@@ -124,7 +127,7 @@ const Addpet = () => {
                 
                 className="w-full border rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-orange-500"
               >
-                <option value="">Select Gender</option>
+                <option value="" >Select Gender</option>
                 <option>Male</option>
                 <option>Female</option>
               </select>
@@ -174,7 +177,7 @@ const Addpet = () => {
                 
                 className="w-full border rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-orange-500"
               >
-                <option value="">Select Status</option>
+                <option value="" >Select Status</option>
                 <option>Vaccinated</option>
                 <option>Not Vaccinated</option>
               </select>
@@ -250,7 +253,7 @@ const Addpet = () => {
           {/* Submit Button */}
           <button
             type="submit"
-            className="w-full bg-orange-500 hover:bg-orange-600 text-white py-3 rounded-xl font-semibold transition"
+            className="w-full bg-accent hover:bg-orange-600 text-white py-3 rounded-xl font-semibold transition cursor-pointer"
           >
             Add Pet
           </button>
