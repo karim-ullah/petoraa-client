@@ -1,4 +1,5 @@
-import TableRow from "@/components/requestpage/TableRow";
+import NoRequestsFound from "@/components/requestpage/NoRequestsFound";
+import TableDisplay from "@/components/requestpage/TableDisplay";
 import { auth } from "@/lib/auth";
 import { Table } from "@heroui/react";
 import { headers } from "next/headers";
@@ -15,7 +16,7 @@ const MyRequestsPage = async () => {
   const res = await fetch(`http://localhost:5000/adoptions/${user?.id}`);
   const pets = await res.json();
   return (
-    <div className="">
+    <div>
       {/* Heading */}
       <div className="py-5">
         <h1 className="font-bold text-3xl">
@@ -25,31 +26,8 @@ const MyRequestsPage = async () => {
           Manage your pets adoption requests
         </p>
       </div>
-      <div>
-        <Table>
-          <Table.ScrollContainer>
-            <Table.Content aria-label="Team members" className="">
-              <Table.Header>
-                <Table.Column isRowHeader>Pet Name</Table.Column>
-                <Table.Column>Request Date</Table.Column>
-                <Table.Column>Pickup Date</Table.Column>
-                <Table.Column>Status</Table.Column>
-                <Table.Column className={'flex justify-center items-center'}>Actions</Table.Column>
-              </Table.Header>
-
-              <Table.Body>
-
-                {
-                    pets.map(pet => <TableRow key={pet._id} pet = {pet} token ={token}></TableRow>)
-                }
-                
-
-                
-              </Table.Body>
-            </Table.Content>
-          </Table.ScrollContainer>
-        </Table>
-      </div>
+      {pets.length > 0 ? <TableDisplay pets = {pets} token={token}></TableDisplay> : <NoRequestsFound></NoRequestsFound>}
+      
     </div>
   );
 };
