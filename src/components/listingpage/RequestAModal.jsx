@@ -1,6 +1,7 @@
 import { AlertDialog } from "@heroui/react";
 import React from "react";
 import RequestAlertFooter from "./RequestAlertFooter";
+import NoRequestsCard from "./NoRequestCard";
 
 const RequestAModal = ({ adoptedPet, pet, token }) => {
    
@@ -87,7 +88,8 @@ const RequestAModal = ({ adoptedPet, pet, token }) => {
               <RequestAlertFooter pet={pet} token={token}></RequestAlertFooter>
             </div>
           ) : (
-            <div>not requested yet</div>
+            <NoRequestsCard></NoRequestsCard>
+           
           )}
         </AlertDialog.Dialog>
       </AlertDialog.Container>

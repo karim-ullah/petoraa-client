@@ -31,7 +31,7 @@ const PetEditPage = async({params}) => {
 
     
   return (
-    <div className="pl-5 py-5">
+    <div className=" py-5">
       {/* Heading */}
       <div className="py-5">
         <h1 className="font-bold text-3xl">

@@ -55,11 +55,7 @@ const ListingCard = ({ pet, token }) => {
 
         <div className="grid grid-cols-2 gap-2 w-full">
 
-          {/* <Button color="warning" fullWidth onClick={handleModal}>
-            <ListUl />
-            Requests
-          </Button> */}
-
+          
           <RequestAlert pet = {pet} token = {token} isModalOpen ={isModalOpen} setIsModalOpen ={setIsModalOpen} adoptedPet = {adoptedPet} setAdoptedPet = {setAdoptedPet}></RequestAlert>
 
           <Button variant="outline" fullWidth>
@@ -73,7 +69,7 @@ const ListingCard = ({ pet, token }) => {
         </div>
 
         {/* Action Buttons */}
-        <div className="grid grid-cols-2 gap-2 w-full">
+        <div className="grid grid-cols-2 gap-2">
           <Button fullWidth variant="outline" color="secondary">
             <Link
               href={`/dashboard/edit-pet/${pet?._id}`}

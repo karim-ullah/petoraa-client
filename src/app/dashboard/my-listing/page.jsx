@@ -27,7 +27,7 @@ const MyListing = async () => {
 
   // console.log(pets.length, 'listing page');
   return (
-    <div className="pl-5 py-5">
+    <div className=" py-5">
       {/* Heading */}
       <div>
         <h1 className="font-bold text-3xl">
@@ -50,13 +50,13 @@ const MyListing = async () => {
         <div className="border border-gray-500 rounded-2xl flex items-center justify-center p-5">
           <div className="flex flex-col items-center">
             <span className="font-bold text-accent text-2xl">{pets?.length}</span>
-            <span className="font-medium text-gray-500">Total Listing</span>
+            <span className="font-medium text-gray-500">Available</span>
           </div>
         </div>
         <div className="border border-gray-500 rounded-2xl flex items-center justify-center p-5">
           <div className="flex flex-col items-center">
             <span className="font-bold text-accent text-2xl">{pets?.length}</span>
-            <span className="font-medium text-gray-500">Total Listing</span>
+            <span className="font-medium text-gray-500">Adopted</span>
           </div>
         </div>
       </div>

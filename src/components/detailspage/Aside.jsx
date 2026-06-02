@@ -1,5 +1,6 @@
 'use client'
 import { authClient } from '@/lib/auth-client';
+import { CodePullRequestArrowRight, SquareListUl } from '@gravity-ui/icons';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import React from 'react';
@@ -30,7 +31,7 @@ const Aside = () => {
         
                 {/* Logo */}
                 <div className="mb-10">
-                  <h1 className="text-2xl font-bold text-orange-500">
+                  <h1 className="text-xl font-semibold text-orange-500">
                     Dashboard
                   </h1>
                 </div>
@@ -46,7 +47,7 @@ const Aside = () => {
                       <Link
                         key={link.path}
                         href={link.path}
-                        className={`block px-4 py-3 rounded-xl font-medium transition
+                        className={`px-4 py-3 rounded-xl font-medium transition flex items-center gap-2
                           
                           ${
                             isActive
@@ -55,7 +56,7 @@ const Aside = () => {
                           }
                         `}
                       >
-                        {link.name}
+                       {link.name === 'My Requests' ? <CodePullRequestArrowRight></CodePullRequestArrowRight> : link.name === 'Add Pet' ? '+' : <SquareListUl/>} {link.name}
                       </Link>
                     );
                   })}

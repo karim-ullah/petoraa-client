@@ -15,7 +15,7 @@ const MyRequestsPage = async () => {
   const res = await fetch(`http://localhost:5000/adoptions/${user?.id}`);
   const pets = await res.json();
   return (
-    <div className="pl-5">
+    <div className="">
       {/* Heading */}
       <div className="py-5">
         <h1 className="font-bold text-3xl">
@@ -28,7 +28,7 @@ const MyRequestsPage = async () => {
       <div>
         <Table>
           <Table.ScrollContainer>
-            <Table.Content aria-label="Team members" className="min-w-[600px]">
+            <Table.Content aria-label="Team members" className="">
               <Table.Header>
                 <Table.Column isRowHeader>Pet Name</Table.Column>
                 <Table.Column>Request Date</Table.Column>

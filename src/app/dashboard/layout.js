@@ -4,12 +4,12 @@ import React from "react";
 
 const layout = ({ children }) => {
   return (
-    <div className="w-7xl mx-auto px-6 min-h-screen flex gap-4">
-      <div className="w-[20%]">
+    <div className="w-7xl mx-auto px-6 min-h-screen flex flex-col md:flex-row gap-6">
+      <div className="md:w-[20%]">
         <Aside></Aside>
       </div>
 
-      <div className="w-[80%]">
+      <div className="md:w-[80%]">
         {/* <Topbar></Topbar> */}
         {children}
       </div>
