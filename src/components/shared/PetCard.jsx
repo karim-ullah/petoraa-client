@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 export default function PetCard({pet}) {
-  console.log(pet, 'from pet');
+  // console.log(pet, 'from pet');
   return (
     <div className=" bg-white rounded-2xl shadow-lg overflow-hidden border hover:shadow-2xl transition duration-300">
 

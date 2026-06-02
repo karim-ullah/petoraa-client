@@ -2,14 +2,22 @@
 import Link from "next/link";
 import { Card, CardFooter, Button, Chip } from "@heroui/react";
 
-import { Eye, Pencil, TrashBin, ListUl } from "@gravity-ui/icons";
-import toast from "react-hot-toast";
-import { redirect } from "next/navigation";
+import { Eye, ListUl, Pencil } from "@gravity-ui/icons";
 import DeleteAlert from "./DeleteAlert";
 import Image from "next/image";
 import RequestAlert from "./RequestAlert";
+import { useState } from "react";
 
-export default function PetCard({ pet, token }) {
+const ListingCard = ({ pet, token }) => {
+  const [adoptedPet, setAdoptedPet] = useState(null)
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  // const handleModal =  () => {
+  //   setIsModalOpen(true);
+  //   console.log(isModalOpen);
+
+  // };
+
   return (
     <Card
       shadow="sm"
@@ -46,8 +54,13 @@ export default function PetCard({ pet, token }) {
         {/* Main Button */}
 
         <div className="grid grid-cols-2 gap-2 w-full">
-          
-          <RequestAlert pet = {pet}></RequestAlert>
+
+          {/* <Button color="warning" fullWidth onClick={handleModal}>
+            <ListUl />
+            Requests
+          </Button> */}
+
+          <RequestAlert pet = {pet} token = {token} isModalOpen ={isModalOpen} setIsModalOpen ={setIsModalOpen} adoptedPet = {adoptedPet} setAdoptedPet = {setAdoptedPet}></RequestAlert>
 
           <Button variant="outline" fullWidth>
             <Link
@@ -75,4 +88,6 @@ export default function PetCard({ pet, token }) {
       </CardFooter>
     </Card>
   );
-}
+};
+
+export default ListingCard;

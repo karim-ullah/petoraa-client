@@ -30,7 +30,7 @@ const Aside = () => {
         
                 {/* Logo */}
                 <div className="mb-10">
-                  <h1 className="text-3xl font-bold text-orange-500">
+                  <h1 className="text-2xl font-bold text-orange-500">
                     Dashboard
                   </h1>
                 </div>

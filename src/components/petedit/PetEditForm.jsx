@@ -10,6 +10,7 @@ const PetEditForm = ({user, pet, token}) => {
         e.preventDefault()
         const form = new FormData(e.target)
         const formData = Object.fromEntries(form.entries())
+        
         const res = await fetch(`http://localhost:5000/pet/${id}`,{
             method: 'PATCH',
             headers: {
