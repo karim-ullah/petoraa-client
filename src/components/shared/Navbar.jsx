@@ -9,6 +9,8 @@ import toast from "react-hot-toast";
 import Image from "next/image";
 
 const Navbar = () => {
+
+  
   const { data: session } = authClient.useSession();
   const user = session?.user;
 
