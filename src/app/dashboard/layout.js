@@ -4,7 +4,7 @@ import React from "react";
 
 const layout = ({ children }) => {
   return (
-    <div className="w-7xl mx-auto px-6 min-h-screen flex flex-col md:flex-row gap-6">
+    <div className="max-w-7xl md:w-7xl mx-auto px-6 min-h-screen flex flex-col md:flex-row gap-6">
       <div className="md:w-[20%]">
         <Aside></Aside>
       </div>

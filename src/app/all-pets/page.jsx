@@ -21,7 +21,8 @@ const AllPets = () => {
   // console.log(pets);
 
   return (
-    <div className="w-7xl px-6 mx-auto min-h-screen">
+    <div className="max-w-7xl md:w-7xl px-6 mx-auto min-h-screen">
+
       <SearchFilter search={search} setSearch={setSearch}></SearchFilter>
       <div className="w-full flex items-center justify-between gap-10 pt-10">
         <div>

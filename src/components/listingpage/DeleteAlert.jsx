@@ -18,7 +18,7 @@ const DeleteAlert = ({ pet, token }) => {
     const data = await res.json();
     if (data) {
       toast.success("Deleted Successfully");
-      redirect("/");
+      redirect("/dashboard/my-listing");
     }
   };
   return (
@@ -46,8 +46,8 @@ const DeleteAlert = ({ pet, token }) => {
               <Button slot="close" variant="tertiary">
                 Cancel
               </Button>
-              <Button slot="close" variant="danger" onClick={handleDelete}>
-                Delete Project
+              <Button slot="close" variant="danger" className={'bg-accent'} onClick={handleDelete}>
+                Delete Pet
               </Button>
             </AlertDialog.Footer>
           </AlertDialog.Dialog>

@@ -9,8 +9,6 @@ import toast from "react-hot-toast";
 import Image from "next/image";
 
 const Navbar = () => {
-
-  
   const { data: session } = authClient.useSession();
   const user = session?.user;
 
@@ -20,6 +18,9 @@ const Navbar = () => {
   const [isDashOpen, setIsDashOpen] = useState(false);
   const pathName = usePathname();
 
+    const dropdownRef = useRef(null);
+
+
   const handleLogOut = async () => {
     await authClient.signOut();
     toast.success("Logout Successfull");
@@ -28,30 +29,21 @@ const Navbar = () => {
 
   const handleDashboard = (e) => {
     setIsDashOpen(!isDashOpen);
-    // if(e.target){
-    //   setIsDashOpen(false)
-    // }
   };
 
-  //   const dashboardRef = useRef(null);
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsDashOpen(false);
+      }
+    };
 
-  //   useEffect(() => {
-  //   const handleClickOutside = (event) => {
-  //     if (
-  //       dashboardRef.current &&
-  //       !dashboardRef.current.contains(event.target)
-  //     ) {
-  //       setIsDashOpen(false);
-  //     }
-  //   };
+    document.addEventListener("mousedown", handleClickOutside);
 
-  //   // document.addEventListener("mousedown", handleClickOutside);
-
-  //   return () => {
-  //     // document.removeEventListener("mousedown", handleClickOutside);
-  //     handleClickOutside
-  //   };
-  // }, []);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   const links = (
     <>
@@ -122,8 +114,11 @@ const Navbar = () => {
 
         <div>
           {user ? (
-            <div className="relative">
+            <div className="relative" ref={dropdownRef}>
               <div
+
+              
+
                 onClick={handleDashboard}
                 className="flex items-center justify-center gap-1 cursor-pointer"
               >
@@ -165,6 +160,7 @@ const Navbar = () => {
                   <div className="flex flex-col gap-2">
                     <Link
                       href={`/dashboard/my-requests`}
+                      onClick={()=> setIsDashOpen(false)}
                       className="px-4 py-3 rounded-xl hover:bg-orange-50 text-gray-700 font-medium transition"
                     >
                       Dashboard

@@ -27,17 +27,17 @@ const Aside = () => {
     },
   ];
     return (
-              <aside className =" bg-white shadow-lg border-r p-6 h-full">
+              <aside className =" bg-white md:shadow-lg md:border-r pt-5 md:p-6 h-full">
         
                 {/* Logo */}
                 <div className="mb-10">
-                  <h1 className="text-xl font-semibold text-orange-500">
+                  <h1 className="text-xl font-semibold text-accent">
                     Dashboard
                   </h1>
                 </div>
         
                 {/* Navigation */}
-                <nav className="space-y-3">
+                <nav className="space-y-3 grid grid-cols-3 items-center  md:grid-cols-1 gap-2">
         
                   {navLinks.map((link) => {
         
@@ -47,11 +47,11 @@ const Aside = () => {
                       <Link
                         key={link.path}
                         href={link.path}
-                        className={`px-4 py-3 rounded-xl font-medium transition flex items-center gap-2
+                        className={`max-w-fit px-1 md:px-4 py-1 md:py-3 rounded-xl font-medium transition flex items-center gap-1
                           
                           ${
                             isActive
-                              ? "bg-orange-500 text-white"
+                              ? "bg-accent text-white"
                               : "text-gray-700 hover:bg-orange-100"
                           }
                         `}

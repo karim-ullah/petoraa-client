@@ -4,7 +4,7 @@ const SearchFilter = ({search, setSearch}) => {
   return (
     <div className="space-y-5 pt-10">
       <div className="text-center space-y-2">
-        <h1 className="text-2xl md:text-5xl font-bold">
+        <h1 className="text-3xl md:text-5xl font-bold">
           Explore our <span className="text-accent">awesome</span> pets
         </h1>
         <p className="text-gray-500">

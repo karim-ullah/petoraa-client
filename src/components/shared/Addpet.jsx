@@ -73,6 +73,7 @@ const Addpet = () => {
 
               <select
                 name="species"
+                required
                 
                 className="w-full border rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-orange-500"
               >
@@ -92,7 +93,9 @@ const Addpet = () => {
               <input
                 type="text"
                 name="breed"
+                required
                 placeholder="Enter breed"
+
                 
                 className="w-full border rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-orange-500"
               />
@@ -109,6 +112,7 @@ const Addpet = () => {
               </label>
 
               <input
+              required
                 type="number"
                 name="age"
                 placeholder="Enter age"
@@ -124,6 +128,7 @@ const Addpet = () => {
 
               <select
                 name="gender"
+                required
                 
                 className="w-full border rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-orange-500"
               >
@@ -142,6 +147,7 @@ const Addpet = () => {
             </label>
 
             <input
+            required
               type="text"
               name="imageUrl"
               placeholder="Paste image URL"
@@ -159,6 +165,7 @@ const Addpet = () => {
               </label>
 
               <input
+              required
                 type="text"
                 name="healthStatus"
                 placeholder="Healthy / Injured"
@@ -174,6 +181,7 @@ const Addpet = () => {
 
               <select
                 name="vaccinationStatus"
+                required
                 
                 className="w-full border rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-orange-500"
               >
@@ -194,6 +202,7 @@ const Addpet = () => {
               </label>
 
               <input
+              required
                 type="text"
                 name="location"
                 placeholder="Enter location"
@@ -208,6 +217,7 @@ const Addpet = () => {
               </label>
 
               <input
+              required
                 type="number"
                 name="adoptionFee"
                 placeholder="Enter fee"
@@ -225,6 +235,7 @@ const Addpet = () => {
             </label>
 
             <textarea
+            required
               name="description"
               rows="5"
               placeholder="Write pet details..."
