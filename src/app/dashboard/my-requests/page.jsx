@@ -1,7 +1,6 @@
 import NoRequestsFound from "@/components/requestpage/NoRequestsFound";
 import TableDisplay from "@/components/requestpage/TableDisplay";
 import { auth } from "@/lib/auth";
-import { Table } from "@heroui/react";
 import { headers } from "next/headers";
 
 const MyRequestsPage = async () => {

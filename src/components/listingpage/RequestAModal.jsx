@@ -4,6 +4,8 @@ import RequestAlertFooter from "./RequestAlertFooter";
 import NoRequestsCard from "./NoRequestCard";
 
 const RequestAModal = ({ adoptedPet, pet, token }) => {
+
+  
    
 
   return (
@@ -85,7 +87,12 @@ const RequestAModal = ({ adoptedPet, pet, token }) => {
               </AlertDialog.Body>
 
               {/* Footer */}
+
+              {adoptedPet.status !== 'approved' || 'rejected' && (
+
               <RequestAlertFooter pet={pet} token={token}></RequestAlertFooter>
+              )}
+              
             </div>
           ) : (
             <NoRequestsCard></NoRequestsCard>

@@ -1,4 +1,3 @@
-import ListingCard from "@/components/listingpage/ListingCard";
 import ListingStatsCard from "@/components/listingpage/ListingStatsCard";
 import NoListingsFound from "@/components/listingpage/NoListingsFound";
 import { auth } from "@/lib/auth";

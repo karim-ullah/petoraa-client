@@ -25,7 +25,7 @@ const RequestAlert = ({
     setIsModalOpen(true);
   };
 
-  console.log(adoptedPet, 'from rq alert');
+  // console.log(adoptedPet, 'from rq alert');
 
   return (
     <AlertDialog>
