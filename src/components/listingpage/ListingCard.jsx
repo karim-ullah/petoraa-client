@@ -9,7 +9,8 @@ import RequestAlert from "./RequestAlert";
 import { useState } from "react";
 
 const ListingCard = ({ pet, token }) => {
-  const [adoptedPet, setAdoptedPet] = useState(null)
+  const [adoptedPet, setAdoptedPet] = useState(null);
+
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   // const handleModal =  () => {
@@ -30,7 +31,7 @@ const ListingCard = ({ pet, token }) => {
           alt={pet?.petName}
           width={100}
           height={240}
-          className="h-60 w-full object-cover transition-transform duration-500 group-hover:scale-105"
+          className="h-60 w-full object-cover transition-transform duration-500 group-hover:scale-105 rounded-2xl"
         />
 
         <Chip
@@ -54,9 +55,14 @@ const ListingCard = ({ pet, token }) => {
         {/* Main Button */}
 
         <div className="grid grid-cols-2 gap-2 w-full">
-
-          
-          <RequestAlert pet = {pet} token = {token} isModalOpen ={isModalOpen} setIsModalOpen ={setIsModalOpen} adoptedPet = {adoptedPet} setAdoptedPet = {setAdoptedPet}></RequestAlert>
+          <RequestAlert
+            pet={pet}
+            token={token}
+            isModalOpen={isModalOpen}
+            setIsModalOpen={setIsModalOpen}
+            adoptedPet={adoptedPet}
+            setAdoptedPet={setAdoptedPet}
+          ></RequestAlert>
 
           <Button variant="outline" fullWidth>
             <Link
@@ -69,7 +75,7 @@ const ListingCard = ({ pet, token }) => {
         </div>
 
         {/* Action Buttons */}
-        <div className="grid grid-cols-2 gap-2">
+        <div className="grid grid-cols-2 gap-2 w-full">
           <Button fullWidth variant="outline" color="secondary">
             <Link
               href={`/dashboard/edit-pet/${pet?._id}`}

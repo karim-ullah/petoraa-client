@@ -4,7 +4,7 @@ import Link from "next/link";
 export default function PetCard({pet}) {
   // console.log(pet, 'from pet');
   return (
-    <div className=" bg-white rounded-2xl shadow-lg overflow-hidden border hover:shadow-2xl transition duration-300">
+    <div className=" bg-background rounded-2xl shadow-lg overflow-hidden border hover:shadow-2xl transition duration-300">
 
       {/* Pet Image */}
       <div className="relative w-full h-64">
@@ -21,7 +21,7 @@ export default function PetCard({pet}) {
 
         {/* Pet Name */}
         <div className="flex items-center justify-between">
-          <h2 className="text-2xl font-bold text-gray-800">
+          <h2 className="text-2xl font-bold text-foreground">
             {pet.petName}
           </h2>
 
@@ -31,12 +31,12 @@ export default function PetCard({pet}) {
         </div>
 
         {/* Description */}
-        <p className="text-gray-600 mt-3">
+        <p className="text-foreground mt-3">
           {pet.description}
         </p>
 
         {/* Small Info */}
-        <div className="flex gap-4 mt-4 text-sm text-gray-500">
+        <div className="flex gap-4 mt-4 text-sm text-foreground">
           <p>🎂 {pet.age}</p>
           <p>📍 {pet.location}</p>
         </div>

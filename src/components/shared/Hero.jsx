@@ -7,17 +7,17 @@ const Hero = () => {
 
         {/* Left Side */}
         <div>
-          <h1 className="text-4xl md:text-6xl font-bold leading-tight">
-            Adopt Your <span className="text-orange-500">Best Friend</span>
+          <h1 className="text-4xl md:text-6xl font-bold leading-tight text-foreground">
+            Adopt Your <span className="text-accent">Best Friend</span>
           </h1>
 
-          <p className="mt-4 text-gray-600 text-lg">
+          <p className="mt-4 text-foreground text-lg">
             Find loving dogs and cats waiting for a home. Give them a second chance and bring happiness to your life.
           </p>
 
           {/* Buttons */}
           <div className="mt-6 flex gap-4">
-            <button className="px-6 py-3 bg-orange-500 text-white rounded-lg cursor-pointer">
+            <button className="px-6 py-3 bg-accent text-white rounded-lg cursor-pointer">
               Adopt Now
             </button>
             <button className="px-6 py-3 border hover:border-accent rounded-lg cursor-pointer">
@@ -26,13 +26,13 @@ const Hero = () => {
           </div>
 
           {/* Small Stats */}
-          <div className="mt-8 flex gap-6 text-sm text-gray-600">
+          <div className="mt-8 flex gap-6 text-sm text-foreground">
             <div>
-              <p className="text-xl font-bold text-black">1200+</p>
+              <p className="text-xl font-bold">1200+</p>
               <p>Pets Available</p>
             </div>
             <div>
-              <p className="text-xl font-bold text-black">850+</p>
+              <p className="text-xl font-bold">850+</p>
               <p>Happy Adoptions</p>
             </div>
           </div>
@@ -53,12 +53,12 @@ const Hero = () => {
           </div>
 
           {/* Floating Card 1 */}
-          <div className="absolute top-10 left-0 md:left-5 bg-white shadow-lg p-3 rounded-xl">
+          <div className="absolute top-10 left-0 md:left-5 bg-background border border-accent shadow-lg p-3 rounded-xl">
             🐶 Dogs
           </div>
 
           {/* Floating Card 2 */}
-          <div className="absolute bottom-10 right-0 bg-white shadow-lg p-3 rounded-xl">
+          <div className="absolute bottom-10 right-0 bg-background border border-accent shadow-lg p-3 rounded-xl">
             🐱 Cats
           </div>
 

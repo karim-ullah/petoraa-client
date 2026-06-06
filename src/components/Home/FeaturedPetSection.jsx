@@ -9,7 +9,7 @@ const FeaturedPetSection = async() => {
     <div className="max-w-7xl mx-auto px-6">
 
       <div className="text-center max-w-2xl mx-auto mb-12">
-        <h2 className="text-4xl font-bold text-gray-800">Featured <span className="text-accent">Pets</span></h2>
+        <h2 className="text-3xl md:text-4xl font-bold mb-4 text-foreground">Featured <span className="text-accent">Pets</span></h2>
 
         <p className="mt-4 text-gray-600 text-lg">
           Meet our adorable pets looking for a loving and caring home. Browse

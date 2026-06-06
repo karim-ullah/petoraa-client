@@ -1,13 +1,17 @@
 @import "tailwindcss";
-@import "@heroui/styles"; 
+@import "@heroui/styles";
 
 :root {
+  /* --background: #ffffff;
+  --foreground: #171717; */
   --background: #ffffff;
   --foreground: #171717;
   --accent: #f97316;
+  /* --accent: #ECB406; */
   --secondary: #18B6C0;
 }
 
-
-
-
+.dark {
+  --background: #171717;
+  --foreground: #ffffff;
+}

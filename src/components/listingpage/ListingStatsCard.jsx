@@ -1,7 +1,9 @@
-import React from 'react';
 import ListingCard from './ListingCard';
 
 const ListingStatsCard = ({pets, token}) => {
+
+
+  
     return (
         <div>
         {/* Stats */}
@@ -31,7 +33,7 @@ const ListingStatsCard = ({pets, token}) => {
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 py-5">
         {
-            pets.map(pet => <ListingCard key={pet._id} pet ={pet} token = {token}></ListingCard>)
+            pets.map(pet => <ListingCard key={pet._id} pet ={pet} token = {token} ></ListingCard>)
         }
       </div>
       </div>

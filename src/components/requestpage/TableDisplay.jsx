@@ -4,7 +4,7 @@ import TableRow from './TableRow';
 
 const TableDisplay = ({pets, token}) => {
     return (
-        <div>
+        <div className='max-w-full'>
         <Table>
           <Table.ScrollContainer>
             <Table.Content aria-label="Team members" className="">

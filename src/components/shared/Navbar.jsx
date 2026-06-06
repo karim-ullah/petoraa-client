@@ -7,12 +7,11 @@ import { ArrowRightToSquare, ChevronDown } from "@gravity-ui/icons";
 import { authClient } from "@/lib/auth-client";
 import toast from "react-hot-toast";
 import Image from "next/image";
+import { ThemeToggle } from "../ThemeToggle";
 
 const Navbar = () => {
   const { data: session } = authClient.useSession();
   const user = session?.user;
-
-
 
   // console.log(user, "user geting");
 
@@ -20,8 +19,7 @@ const Navbar = () => {
   const [isDashOpen, setIsDashOpen] = useState(false);
   const pathName = usePathname();
 
-    const dropdownRef = useRef(null);
-
+  const dropdownRef = useRef(null);
 
   const handleLogOut = async () => {
     await authClient.signOut();
@@ -108,92 +106,102 @@ const Navbar = () => {
           <div className="font-semibold text-2xl">
             <Link href={"/"}>
               <span className="text-accent">Peto</span>
-              <span className="text-secondary">Raa</span>
+              <span className="text-foreground">Raa</span>
             </Link>
           </div>
         </div>
         <ul className="hidden items-center gap-4 md:flex">{links}</ul>
 
-        <div>
-          {user ? (
-            <div className="relative" ref={dropdownRef}>
-              <div
+        {/* themeToggle and user Data */}
 
-              
+        <div className="flex gap-2 items-center">
+          {/* themetoggle */}
 
-                onClick={handleDashboard}
-                className="flex items-center justify-center gap-1 cursor-pointer"
-              >
-                <Avatar>
-                  <Avatar.Image alt="John Doe" src={user?.image} />
-                  <Avatar.Fallback>JD</Avatar.Fallback>
-                </Avatar>
-                <h3>{user?.name}</h3>
-                <ChevronDown
-                  className={`${isDashOpen ? "rotate-0" : "rotate-180"}`}
-                ></ChevronDown>
-              </div>
+          <div>
+            <ThemeToggle></ThemeToggle>
+          </div>
 
-              {isDashOpen && (
-                <div className="absolute right-0 top-14 w-72 bg-white border border-gray-200 rounded-2xl shadow-xl p-5 z-50">
-                  {/* User Info */}
-                  <div className="flex items-center gap-4">
-                    <Image
-                      src={user?.image || "https://i.pravatar.cc/100"}
-                      alt={user?.name}
-                      width={56}
-                      height={56}
-                      className="w-14 h-14 rounded-full object-cover border"
-                    />
+          {/* user */}
+          <div>
+            {user ? (
+              <div className="relative" ref={dropdownRef}>
+                <div
+                  onClick={handleDashboard}
+                  className="flex items-center justify-center gap-1 cursor-pointer"
+                >
+                  <Avatar size="sm">
+                    <Avatar.Image alt="John Doe" src={user?.image} />
+                    <Avatar.Fallback>JD</Avatar.Fallback>
+                  </Avatar>
+                  <h3>{user?.name}</h3>
+                  <ChevronDown
+                    className={`${isDashOpen ? "rotate-0" : "rotate-180"}`}
+                  ></ChevronDown>
+                </div>
 
-                    <div>
-                      <h2 className="font-semibold text-lg text-gray-800">
-                        {user?.name}
-                      </h2>
+                {isDashOpen && (
+                  <div className="absolute right-0 top-14 w-72 bg-background border border-gray-200 rounded-2xl shadow-xl p-5 z-50">
+                    {/* User Info */}
+                    <div className="flex items-center gap-4">
+                      <Image
+                        src={user?.image || "https://i.pravatar.cc/100"}
+                        alt={user?.name}
+                        width={56}
+                        height={56}
+                        className="w-14 h-14 rounded-full object-cover border"
+                      />
 
-                      <p className="text-sm text-gray-500">{user?.email}</p>
+                      <div>
+                        <h2 className="font-semibold text-lg text-foreground">
+                          {user?.name}
+                        </h2>
+
+                        <p className="text-sm text-gray-400">{user?.email}</p>
+                      </div>
+                    </div>
+
+                    {/* Divider */}
+                    <div className="my-4 border-t"></div>
+
+                    {/* Menu Items */}
+                    <div className="flex flex-col gap-2">
+                      <Link
+                        href={`/dashboard/my-requests`}
+                        onClick={() => setIsDashOpen(false)}
+                        className="px-4 py-3 rounded-xl hover:bg-orange-50 text-gray-600 font-medium transition"
+                      >
+                        Dashboard
+                      </Link>
+
+                      <Link
+                        href="/"
+                        className="px-4 py-3 rounded-xl hover:bg-orange-50 text-gray-600 font-medium transition"
+                      >
+                        Profile
+                      </Link>
+
+                      <button
+                        onClick={handleLogOut}
+                        className="w-full text-left px-4 py-3 rounded-xl bg-orange-500 hover:bg-orange-600 text-white font-semibold transition"
+                      >
+                        Logout
+                      </button>
                     </div>
                   </div>
-
-                  {/* Divider */}
-                  <div className="my-4 border-t"></div>
-
-                  {/* Menu Items */}
-                  <div className="flex flex-col gap-2">
-                    <Link
-                      href={`/dashboard/my-requests`}
-                      onClick={()=> setIsDashOpen(false)}
-                      className="px-4 py-3 rounded-xl hover:bg-orange-50 text-gray-700 font-medium transition"
-                    >
-                      Dashboard
-                    </Link>
-
-                    <Link
-                      href="/profile"
-                      className="px-4 py-3 rounded-xl hover:bg-orange-50 text-gray-700 font-medium transition"
-                    >
-                      Profile
-                    </Link>
-
-                    <button
-                      onClick={handleLogOut}
-                      className="w-full text-left px-4 py-3 rounded-xl bg-orange-500 hover:bg-orange-600 text-white font-semibold transition"
-                    >
-                      Logout
-                    </button>
-                  </div>
-                </div>
-              )}
-            </div>
-          ) : (
-            <Button
-              size="sm"
-              className={"bg-accent px-5 py-1 font-semibold text-sm rounded-lg"}
-            >
-              <ArrowRightToSquare></ArrowRightToSquare>
-              <Link href={"/login"}>Login</Link>
-            </Button>
-          )}
+                )}
+              </div>
+            ) : (
+              <Button
+                size="sm"
+                className={
+                  "bg-accent px-5 py-1 font-semibold text-sm rounded-lg"
+                }
+              >
+                <ArrowRightToSquare></ArrowRightToSquare>
+                <Link href={"/login"}>Login</Link>
+              </Button>
+            )}
+          </div>
         </div>
       </header>
 

@@ -34,7 +34,7 @@ export default function PetCareTips() {
 
         {/* Heading */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">
             Pet <span className="text-accent">Care</span> Tips
           </h2>
 
@@ -52,7 +52,7 @@ export default function PetCareTips() {
               key={index}
               className="border shadow-sm hover:shadow-lg transition-all duration-300"
             >
-              <div className="p-8">
+              <div className="p-5">
 
                 <div className="text-5xl mb-5">
                   {tip.icon}

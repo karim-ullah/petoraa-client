@@ -37,7 +37,7 @@ const PetDetailsPage = async({params})=> {
 
 
   return (
-    <div className="bg-background py-10">
+    <div className="bg-foreground py-10">
 
       <div className="max-w-7xl mx-auto grid lg:grid-cols-3 gap-8 px-6">
 

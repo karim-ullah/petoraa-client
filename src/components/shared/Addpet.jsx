@@ -32,15 +32,15 @@ const Addpet = () => {
     }
   };
     return (
-        <div className="min-h-screen bg-background py-10 px-6">
-      <div className="max-w-3xl mx-auto bg-white shadow-lg rounded-2xl p-8">
+        <div className="min-h-screen py-10 px-6">
+      <div className="max-w-3xl mx-auto bg-background shadow-lg border border-accent rounded-2xl p-8">
 
         {/* Heading */}
         <div className="mb-8 text-center">
-          <h1 className="text-4xl font-bold text-gray-800">
+          <h1 className="text-4xl font-bold text-foreground">
             Add a Pet
           </h1>
-          <p className="text-gray-500 mt-2">
+          <p className="text-foreground mt-2">
             Fill out the form to list your pet for adoption.
           </p>
         </div>
@@ -59,7 +59,7 @@ const Addpet = () => {
               type="text"
               name="petName"
               placeholder="Enter pet name"
-              className="w-full border rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-orange-500"
+              className="w-full border rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-accent"
             />
           </div>
 
@@ -97,7 +97,7 @@ const Addpet = () => {
                 placeholder="Enter breed"
 
                 
-                className="w-full border rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-orange-500"
+                className="w-full border rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-accent"
               />
             </div>
 
@@ -117,7 +117,7 @@ const Addpet = () => {
                 name="age"
                 placeholder="Enter age"
                 
-                className="w-full border rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-orange-500"
+                className="w-full border rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-accent"
               />
             </div>
 

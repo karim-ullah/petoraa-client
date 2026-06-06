@@ -38,7 +38,7 @@ export default function HowAdoptionWorks() {
 
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">
             How <span className="text-accent">Adoption</span> Works
           </h2>
 
@@ -56,7 +56,7 @@ export default function HowAdoptionWorks() {
               key={step.step}
               className="relative border shadow-sm hover:shadow-lg transition-all duration-300"
             >
-              <div className="p-8 text-center">
+              <div className="p-5">
 
                 {/* Step Number */}
                 <span className="absolute top-4 right-4 text-5xl font-bold text-default-100">

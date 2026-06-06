@@ -6,7 +6,7 @@ const WhyAdoptPets = () => {
       <div className="max-w-7xl mx-auto px-6">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">
             Why <span className="text-accent">Adopt</span> a Pet?
           </h2>
 
@@ -18,7 +18,7 @@ const WhyAdoptPets = () => {
 
         {/* Features */}
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          <div className="bg-white p-8 rounded-3xl shadow-sm border">
+          <div className="bg-background p-8 rounded-3xl shadow-sm border">
             <div className="text-5xl mb-4">❤️</div>
 
             <h3 className="text-xl font-semibold mb-3">Save a Life</h3>
@@ -29,7 +29,7 @@ const WhyAdoptPets = () => {
             </p>
           </div>
 
-          <div className="bg-white p-8 rounded-3xl shadow-sm border">
+          <div className="bg-background p-8 rounded-3xl shadow-sm border">
             <div className="text-5xl mb-4">🐾</div>
 
             <h3 className="text-xl font-semibold mb-3">Loyal Companion</h3>
@@ -40,7 +40,7 @@ const WhyAdoptPets = () => {
             </p>
           </div>
 
-          <div className="bg-white p-8 rounded-3xl shadow-sm border">
+          <div className="bg-background p-8 rounded-3xl shadow-sm border">
             <div className="text-5xl mb-4">😊</div>
 
             <h3 className="text-xl font-semibold mb-3">Improve Well-being</h3>
@@ -51,7 +51,7 @@ const WhyAdoptPets = () => {
             </p>
           </div>
 
-          <div className="bg-white p-8 rounded-3xl shadow-sm border">
+          <div className="bg-background p-8 rounded-3xl shadow-sm border">
             <div className="text-5xl mb-4">🏠</div>
 
             <h3 className="text-xl font-semibold mb-3">Give Them a Home</h3>
