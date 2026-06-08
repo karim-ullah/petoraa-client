@@ -5,7 +5,7 @@ import NoRequestsCard from "./NoRequestCard";
 
 const RequestAModal = ({ adoptedPet, pet, token }) => {
 
-  
+  // console.log(adoptedPet, 'from request');
    
 
   return (
@@ -31,7 +31,7 @@ const RequestAModal = ({ adoptedPet, pet, token }) => {
                   </div>
 
                   <span className="px-3 py-1 text-xs font-semibold rounded-full bg-yellow-100 text-yellow-700">
-                    {adoptedPet.status}
+                    {adoptedPet?.status}
                   </span>
                 </div>
               </AlertDialog.Header>
@@ -45,7 +45,7 @@ const RequestAModal = ({ adoptedPet, pet, token }) => {
                       Applicant Name
                     </p>
 
-                    <p className="font-semibold">{adoptedPet.userName}</p>
+                    <p className="font-semibold">{adoptedPet?.userName}</p>
                   </div>
 
                   <div className="bg-default-50 rounded-xl p-4">
@@ -53,7 +53,7 @@ const RequestAModal = ({ adoptedPet, pet, token }) => {
                       Email Address
                     </p>
 
-                    <p className="font-semibold">{adoptedPet.userEmail}</p>
+                    <p className="font-semibold">{adoptedPet?.userEmail}</p>
                   </div>
                 </div>
 
@@ -62,7 +62,7 @@ const RequestAModal = ({ adoptedPet, pet, token }) => {
                   <div className="bg-default-50 rounded-xl p-4">
                     <p className="text-xs text-default-500 mb-1">Pickup Date</p>
 
-                    <p className="font-semibold">{adoptedPet.pickupDate}</p>
+                    <p className="font-semibold">{adoptedPet?.pickupDate}</p>
                   </div>
 
                   <div className="bg-default-50 rounded-xl p-4">
@@ -70,7 +70,7 @@ const RequestAModal = ({ adoptedPet, pet, token }) => {
                       Request Date
                     </p>
 
-                    <p className="font-semibold">{adoptedPet.requestDate}</p>
+                    <p className="font-semibold">{adoptedPet?.requestDate}</p>
                   </div>
                 </div>
 
@@ -81,14 +81,14 @@ const RequestAModal = ({ adoptedPet, pet, token }) => {
                   </p>
 
                   <p className="leading-relaxed text-sm">
-                    {adoptedPet.message}
+                    {adoptedPet?.message}
                   </p>
                 </div>
               </AlertDialog.Body>
 
               {/* Footer */}
 
-              {adoptedPet.status !== 'approved' || 'rejected' && (
+              {adoptedPet?.status !== 'approved' && adoptedPet?.status !== 'rejected' && (
 
               <RequestAlertFooter pet={pet} token={token}></RequestAlertFooter>
               )}

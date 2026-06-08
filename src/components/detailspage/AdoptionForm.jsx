@@ -7,11 +7,12 @@ const AdoptionForm = ({ pet }) => {
   const { data: session } = authClient.useSession();
   const user = session?.user;
 
-  // console.log(user);
+  // console.log(pet, 'from testing');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const id = pet._id
+    const ownerId = pet.ownerId
     const today = new Date();
     const currentDate = `${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()}`
     const form = new FormData(e.target);
@@ -20,6 +21,7 @@ const AdoptionForm = ({ pet }) => {
     formData.status = "pending";
     formData.requestDate = currentDate
     formData.petId = id
+    formData.ownerId = ownerId
 
     const res = await fetch("http://localhost:5000/adoptions", {
       method: "POST",
@@ -30,7 +32,7 @@ const AdoptionForm = ({ pet }) => {
     });
 
     const data = await res.json();
-    console.log(data, "data");
+    // console.log(data, "data");
 
     if (data.insertedId) {
       return toast.success("Adoption request added successfully");
@@ -122,7 +124,7 @@ const AdoptionForm = ({ pet }) => {
         {/* Button */}
         <button
           type="submit"
-          className="w-full bg-orange-500 hover:bg-orange-600 text-white py-3 rounded-xl font-semibold transition"
+          className="w-full bg-orange-500 hover:bg-orange-600 text-white py-3 rounded-xl font-semibold transition cursor-pointer"
         >
           Adopt Now
         </button>

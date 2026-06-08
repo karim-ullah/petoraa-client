@@ -1,12 +1,10 @@
 import Image from 'next/image';
-import React from 'react';
-
 const Hero = () => {
     return (
         <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-10 items-center px-6 py-16">
 
         {/* Left Side */}
-        <div>
+        <div >
           <h1 className="text-4xl md:text-6xl font-bold leading-tight text-foreground">
             Adopt Your <span className="text-accent">Best Friend</span>
           </h1>
@@ -39,7 +37,7 @@ const Hero = () => {
         </div>
 
         {/* Right Side */}
-        <div className="relative flex justify-center">
+        <div  className="relative flex justify-center">
 
           {/* Main Image */}
           <div className="w-[320px] h-[400px] bg-gray-200 rounded-2xl overflow-hidden shadow-lg">

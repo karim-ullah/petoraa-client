@@ -1,5 +1,6 @@
 'use client';
 
+import Reveal from "@/Animations/Reveal";
 import { authClient } from "@/lib/auth-client";
 import { redirect } from "next/navigation";
 import toast from "react-hot-toast";
@@ -13,7 +14,7 @@ const Addpet = () => {
 
     const formData = new FormData(e.target)
     const petData = Object.fromEntries(formData.entries())
-    petData.userId = user?.id
+    petData.ownerId = user?.id
     // console.log(data);
 
     // Sending data to database
@@ -32,7 +33,8 @@ const Addpet = () => {
     }
   };
     return (
-        <div className="min-h-screen py-10 px-6">
+        <Reveal>
+          <div className="min-h-screen py-10 px-6">
       <div className="max-w-3xl mx-auto bg-background shadow-lg border border-accent rounded-2xl p-8">
 
         {/* Heading */}
@@ -272,6 +274,7 @@ const Addpet = () => {
         </form>
       </div>
     </div>
+        </Reveal>
     );
 };
 

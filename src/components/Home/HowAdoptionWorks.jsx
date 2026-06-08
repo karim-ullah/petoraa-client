@@ -1,3 +1,4 @@
+import Reveal from "@/Animations/Reveal";
 import { Card } from "@heroui/react";
 
 export default function HowAdoptionWorks() {
@@ -35,55 +36,44 @@ export default function HowAdoptionWorks() {
   return (
     <section className="py-10">
       <div className="max-w-7xl mx-auto px-6">
-
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            How <span className="text-accent">Adoption</span> Works
-          </h2>
+        <Reveal>
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              How <span className="text-accent">Adoption</span> Works
+            </h2>
 
-          <p className="text-gray-500 text-lg">
-            Adopting a pet is simple. Follow these four easy steps
-            to find your perfect companion.
-          </p>
-        </div>
+            <p className="text-gray-500 text-lg">
+              Adopting a pet is simple. Follow these four easy steps to find
+              your perfect companion.
+            </p>
+          </div>
+        </Reveal>
 
         {/* Steps */}
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-
           {steps.map((step) => (
-            <Card
-              key={step.step}
-              className="relative border shadow-sm hover:shadow-lg transition-all duration-300"
-            >
-              <div className="p-5">
+            <Reveal key={step.step}>
+              <Card className="relative border shadow-sm hover:shadow-lg transition-all duration-300">
+                <div className="p-5">
+                  {/* Step Number */}
+                  <span className="absolute top-4 right-4 text-5xl font-bold text-default-100">
+                    {step.step}
+                  </span>
 
-                {/* Step Number */}
-                <span className="absolute top-4 right-4 text-5xl font-bold text-default-100">
-                  {step.step}
-                </span>
+                  {/* Icon */}
+                  <div className="text-5xl mb-5">{step.icon}</div>
 
-                {/* Icon */}
-                <div className="text-5xl mb-5">
-                  {step.icon}
+                  {/* Title */}
+                  <h3 className="text-xl font-semibold mb-3">{step.title}</h3>
+
+                  {/* Description */}
+                  <p className="text-default-500">{step.description}</p>
                 </div>
-
-                {/* Title */}
-                <h3 className="text-xl font-semibold mb-3">
-                  {step.title}
-                </h3>
-
-                {/* Description */}
-                <p className="text-default-500">
-                  {step.description}
-                </p>
-
-              </div>
-            </Card>
+              </Card>
+            </Reveal>
           ))}
-
         </div>
-
       </div>
     </section>
   );

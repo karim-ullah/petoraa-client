@@ -12,7 +12,11 @@ const MyRequestsPage = async () => {
   const {token} = await auth.api.getToken({
     headers: await headers()
   })
-  const res = await fetch(`http://localhost:5000/adoptions/${user?.id}`);
+  const res = await fetch(`http://localhost:5000/adoptions/${user?.id}`, {
+    headers: {
+      authorization: `Bearer ${token}`
+    }
+  });
   const pets = await res.json();
   return (
     <div>

@@ -1,11 +1,13 @@
 import Link from "next/link";
 import { Button } from "@heroui/react";
+import Reveal from "@/Animations/Reveal";
 
 export default function CallToAction() {
   return (
     <section className="py-10">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="relative overflow-hidden rounded-4xl bg-accent p-10 md:p-16 text-white">
+        <Reveal>
+          <div className="relative overflow-hidden rounded-4xl bg-accent p-10 md:p-16 text-white">
           {/* Content */}
           <div className="max-w-3xl mx-auto text-center">
             <span className="inline-block px-4 py-2 rounded-full bg-white/20 text-sm font-medium mb-6">
@@ -41,6 +43,7 @@ export default function CallToAction() {
           <div className="absolute -top-10 -right-10 w-40 h-40 bg-white/10 rounded-full" />
           <div className="absolute -bottom-12 -left-12 w-52 h-52 bg-white/10 rounded-full" />
         </div>
+        </Reveal>
       </div>
     </section>
   );

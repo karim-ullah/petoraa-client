@@ -1,58 +1,53 @@
+import Reveal from "@/Animations/Reveal";
 import Image from "next/image";
 import Link from "next/link";
 
-export default function PetCard({pet}) {
+export default function PetCard({ pet }) {
   // console.log(pet, 'from pet');
   return (
-    <div className=" bg-background rounded-2xl shadow-lg overflow-hidden border hover:shadow-2xl transition duration-300">
+    <div className="hover:shadow-xl rounded-2xl transition duration-300">
+      <Reveal>
+      <div className="bg-background rounded-2xl overflow-hidden border">
+        {/* Pet Image */}
+        <div className="relative w-full h-64">
+          <Image src={pet.imageUrl} alt="Dog" fill className="object-cover" />
+        </div>
 
-      {/* Pet Image */}
-      <div className="relative w-full h-64">
-        <Image
-          src={pet.imageUrl}
-          alt="Dog"
-          fill
-          className="object-cover"
-        />
+        {/* Card Content */}
+        <div className="p-5">
+          {/* Pet Name */}
+          <div className="flex items-center justify-between">
+            <h2 className="text-2xl font-bold text-foreground">
+              {pet.petName}
+            </h2>
+
+            <span className="bg-orange-100 text-orange-500 text-sm px-3 py-1 rounded-full">
+              {pet.species}
+            </span>
+          </div>
+
+          {/* Description */}
+          <p className="text-foreground mt-3 line-clamp-2 h-20">{pet.description}</p>
+
+          {/* Small Info */}
+          <div className="flex gap-4 mt-4 text-sm text-foreground">
+            <p>🎂 {pet.age}</p>
+            <p>📍 {pet.location}</p>
+          </div>
+
+          {/* Buttons */}
+          <div className="flex gap-3 mt-6">
+            <button className="flex-1 border border-orange-500 text-orange-500 py-2 rounded-xl hover:bg-orange-50 transition">
+              <Link href={`/all-pets/${pet._id}`}>View Details</Link>
+            </button>
+
+            <button className="flex-1 bg-orange-500 text-white py-2 rounded-xl hover:bg-orange-600 transition">
+              Adopt Now
+            </button>
+          </div>
+        </div>
       </div>
-
-      {/* Card Content */}
-      <div className="p-5">
-
-        {/* Pet Name */}
-        <div className="flex items-center justify-between">
-          <h2 className="text-2xl font-bold text-foreground">
-            {pet.petName}
-          </h2>
-
-          <span className="bg-orange-100 text-orange-500 text-sm px-3 py-1 rounded-full">
-            {pet.species}
-          </span>
-        </div>
-
-        {/* Description */}
-        <p className="text-foreground mt-3">
-          {pet.description}
-        </p>
-
-        {/* Small Info */}
-        <div className="flex gap-4 mt-4 text-sm text-foreground">
-          <p>🎂 {pet.age}</p>
-          <p>📍 {pet.location}</p>
-        </div>
-
-        {/* Buttons */}
-        <div className="flex gap-3 mt-6">
-          <button className="flex-1 border border-orange-500 text-orange-500 py-2 rounded-xl hover:bg-orange-50 transition">
-            <Link href={`/all-pets/${pet._id}`}>View Details</Link>
-          </button>
-
-          <button className="flex-1 bg-orange-500 text-white py-2 rounded-xl hover:bg-orange-600 transition">
-            Adopt Now
-          </button>
-        </div>
-
-      </div>
+    </Reveal>
     </div>
   );
 }

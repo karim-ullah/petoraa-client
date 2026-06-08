@@ -1,4 +1,5 @@
 "use client";
+import Reveal from "@/Animations/Reveal";
 import Filter from "@/components/allpets/Filter";
 import NoPetsFound from "@/components/allpets/NoPetsFound";
 import SearchFilter from "@/components/allpets/SearchFilter";
@@ -25,11 +26,13 @@ const AllPets = () => {
 
       <SearchFilter search={search} setSearch={setSearch}></SearchFilter>
       <div className="w-full flex items-center justify-between gap-10 pt-10">
-        <div>
+        <Reveal>
+          <div>
           <h3 className="font-semibold">
             All pets <span className="text-accent">({pets.length})</span>
           </h3>
         </div>
+        </Reveal>
         <div>
           <Filter species={species} setSpecies={setSpecies}></Filter>
         </div>

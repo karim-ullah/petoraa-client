@@ -1,3 +1,4 @@
+import Reveal from "@/Animations/Reveal";
 import { Card, Button } from "@heroui/react";
 
 export default function PetCareTips() {
@@ -31,54 +32,45 @@ export default function PetCareTips() {
   return (
     <section className="py-10 bg-background">
       <div className="max-w-7xl mx-auto px-6">
-
         {/* Heading */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Pet <span className="text-accent">Care</span> Tips
-          </h2>
+        <Reveal>
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              Pet <span className="text-accent">Care</span> Tips
+            </h2>
 
-          <p className="text-gray-500 text-lg">
-            Help your furry friends live a happy, healthy, and fulfilling life
-            with these essential pet care practices.
-          </p>
-        </div>
+            <p className="text-gray-500 text-lg">
+              Help your furry friends live a happy, healthy, and fulfilling life
+              with these essential pet care practices.
+            </p>
+          </div>
+        </Reveal>
 
         {/* Tips Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-
           {tips.map((tip, index) => (
-            <Card
-              key={index}
-              className="border shadow-sm hover:shadow-lg transition-all duration-300"
-            >
-              <div className="p-5">
+            <Reveal key={index}>
+              <Card className="h-full border shadow-sm hover:shadow-lg transition-all duration-300">
+                <div className="p-5">
+                  <div className="text-5xl mb-5">{tip.icon}</div>
 
-                <div className="text-5xl mb-5">
-                  {tip.icon}
+                  <h3 className="text-xl font-semibold mb-3 line-clamp-1">{tip.title}</h3>
+
+                  <p className="text-default-500 line-clamp-4">{tip.description}</p>
                 </div>
-
-                <h3 className="text-xl font-semibold mb-3">
-                  {tip.title}
-                </h3>
-
-                <p className="text-default-500">
-                  {tip.description}
-                </p>
-
-              </div>
-            </Card>
+              </Card>
+            </Reveal>
           ))}
-
         </div>
 
         {/* CTA */}
-        <div className="text-center mt-12">
-          <Button color="warning" size="sm" className={'bg-accent'}>
+        <Reveal>
+          <div className="text-center mt-12">
+          <Button color="warning" size="sm" className={"bg-accent"}>
             Explore More Tips
           </Button>
         </div>
-
+        </Reveal>
       </div>
     </section>
   );

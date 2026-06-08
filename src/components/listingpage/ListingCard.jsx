@@ -7,6 +7,7 @@ import DeleteAlert from "./DeleteAlert";
 import Image from "next/image";
 import RequestAlert from "./RequestAlert";
 import { useState } from "react";
+import Reveal from "@/Animations/Reveal";
 
 const ListingCard = ({ pet, token }) => {
   const [adoptedPet, setAdoptedPet] = useState(null);
@@ -20,7 +21,8 @@ const ListingCard = ({ pet, token }) => {
   // };
 
   return (
-    <Card
+    <Reveal>
+      <Card
       shadow="sm"
       className="group overflow-hidden border hover:shadow-2xl transition-all duration-300"
     >
@@ -89,6 +91,7 @@ const ListingCard = ({ pet, token }) => {
         </div>
       </CardFooter>
     </Card>
+    </Reveal>
   );
 };
 

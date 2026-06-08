@@ -1,3 +1,4 @@
+import Reveal from "@/Animations/Reveal";
 import ListingStatsCard from "@/components/listingpage/ListingStatsCard";
 import NoListingsFound from "@/components/listingpage/NoListingsFound";
 import { auth } from "@/lib/auth";
@@ -25,12 +26,16 @@ const MyListing = async () => {
   });
   const pets = await res.json();
 
+  
+  
+
 
   // console.log(pets.length, 'listing page');
   return (
     <div className=" py-5">
       {/* Heading */}
-      <div>
+      <Reveal>
+        <div>
         <h1 className="font-bold text-3xl">
           My <span className="text-accent">Listing</span>
         </h1>
@@ -38,9 +43,10 @@ const MyListing = async () => {
           Manage your pets listing and adoption requests
         </p>
       </div>
+      </Reveal>
 
       {
-        pets.length > 0 ? <ListingStatsCard pets = {pets} token = {token}></ListingStatsCard>
+        pets.length > 0 ? <ListingStatsCard pets = {pets} token = {token} id = {id}></ListingStatsCard>
         : 
 
         <NoListingsFound></NoListingsFound>

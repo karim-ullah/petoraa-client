@@ -1,15 +1,17 @@
+import Reveal from "@/Animations/Reveal";
 import { Button } from "@heroui/react";
 import Link from "next/link";
 
 export default function NoPetsFound() {
   return (
-    <div className="flex flex-col items-center justify-center text-center py-16 px-6">
+    <Reveal>
+      <div className="flex flex-col items-center justify-center text-center py-16 px-6">
       
       {/* Icon */}
       <div className="text-6xl mb-4">🐾</div>
 
       {/* Title */}
-      <h2 className="text-2xl font-semibold text-gray-800">
+      <h2 className="text-2xl font-semibold text-foreground">
         No Pets Available
       </h2>
 
@@ -24,5 +26,6 @@ export default function NoPetsFound() {
         <Link href={'/add-pet'}>Add Pet</Link>
       </Button>
     </div>
+    </Reveal>
   );
 }

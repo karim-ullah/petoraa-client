@@ -28,7 +28,7 @@ const PetDetailsPage = async({params})=> {
   const pet = await res.json()
 
 
-  const isOwner = pet.userId === user.id
+  const isOwner = pet.ownerId === user.id
   
 
   
@@ -37,12 +37,12 @@ const PetDetailsPage = async({params})=> {
 
 
   return (
-    <div className="bg-foreground py-10">
+    <div className="bg-background py-10">
 
       <div className="max-w-7xl mx-auto grid lg:grid-cols-3 gap-8 px-6">
 
         {/* Left Side - Pet Details */}
-        <div className="lg:col-span-2 bg-white rounded-2xl shadow-lg overflow-hidden">
+        <div className="lg:col-span-2 bg-background rounded-2xl shadow-lg overflow-hidden">
 
           {/* Image */}
           <Image
@@ -57,7 +57,7 @@ const PetDetailsPage = async({params})=> {
           <div className="p-6">
 
             <div className="flex items-center justify-between">
-              <h1 className="text-4xl font-bold text-gray-800">
+              <h1 className="text-4xl font-bold text-foreground">
                 {pet.petName}
               </h1>
 
@@ -73,27 +73,27 @@ const PetDetailsPage = async({params})=> {
             {/* Info Grid */}
             <div className="grid md:grid-cols-2 gap-4 mt-8">
 
-              <div className="bg-gray-50 p-4 rounded-xl">
+              <div className="bg-background p-4 rounded-xl border border-accent">
                 <p className="font-semibold">Breed</p>
                 <p className="text-gray-600">{pet.breed}</p>
               </div>
 
-              <div className="bg-gray-50 p-4 rounded-xl">
+              <div className="bg-background p-4 rounded-xl border border-accent">
                 <p className="font-semibold">Age</p>
                 <p className="text-gray-600">{pet.age} Years</p>
               </div>
 
-              <div className="bg-gray-50 p-4 rounded-xl">
+              <div className="bg-background p-4 rounded-xl border border-accent">
                 <p className="font-semibold">Gender</p>
                 <p className="text-gray-600">{pet.gender}</p>
               </div>
 
-              <div className="bg-gray-50 p-4 rounded-xl">
+              <div className="bg-background p-4 rounded-xl border border-accent">
                 <p className="font-semibold">Health Status</p>
                 <p className="text-gray-600">{pet.healthStatus}</p>
               </div>
 
-              <div className="bg-gray-50 p-4 rounded-xl">
+              <div className="bg-background p-4 rounded-xl border border-accent">
                 <p className="font-semibold">
                   Vaccination Status
                 </p>
@@ -102,12 +102,12 @@ const PetDetailsPage = async({params})=> {
                 </p>
               </div>
 
-              <div className="bg-gray-50 p-4 rounded-xl">
+              <div className="bg-background p-4 rounded-xl border border-accent">
                 <p className="font-semibold">Location</p>
                 <p className="text-gray-600">{pet.location}</p>
               </div>
 
-              <div className="bg-gray-50 p-4 rounded-xl">
+              <div className="bg-background p-4 rounded-xl border border-accent">
                 <p className="font-semibold">Adoption Fee</p>
                 <p className="text-gray-600">
                   ${pet.adoptionFee}
@@ -124,7 +124,7 @@ const PetDetailsPage = async({params})=> {
 
       {
         isOwner ? <div>
-          this is your added pet 
+          <p className="text-accent">this is your added pet</p> 
         </div>
         :
         <AdoptionForm pet = {pet}></AdoptionForm>

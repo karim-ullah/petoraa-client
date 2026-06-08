@@ -1,8 +1,9 @@
-import { Label, ListBox, Select } from "@heroui/react";
+import Reveal from "@/Animations/Reveal";
 
 const Filter = ({ species, setSpecies }) => {
   return (
-    <select
+    <Reveal>
+      <select
       value={species}
       onChange={(e) => setSpecies(e.target.value)}
       className="
@@ -29,6 +30,7 @@ const Filter = ({ species, setSpecies }) => {
       <option value="Bird">Bird</option>
       <option value="Rabbit">Rabbit</option>
     </select>
+    </Reveal>
   );
 };
 

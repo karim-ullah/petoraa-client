@@ -1,4 +1,6 @@
+import Reveal from "@/Animations/Reveal";
 import { Card} from "@heroui/react";
+import Image from "next/image";
 
 export default function SuccessStories() {
   const stories = [
@@ -36,7 +38,8 @@ export default function SuccessStories() {
       <div className="max-w-7xl mx-auto px-4">
 
         {/* Heading */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <Reveal>
+          <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
             Success <span className="text-accent">Stories</span>
           </h2>
@@ -45,13 +48,15 @@ export default function SuccessStories() {
             Real stories from families who found their perfect companions through adoption.
           </p>
         </div>
+        </Reveal>
 
         {/* Stories */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
 
           {stories.map((story) => (
-            <Card
-              key={story.id}
+            <Reveal key={story.id}>
+              <Card
+              
               className="border shadow-sm hover:shadow-lg transition-all duration-300"
             >
               <div className="p-6">
@@ -59,9 +64,11 @@ export default function SuccessStories() {
                 {/* User */}
                 <div className="flex items-center gap-4 mb-5">
 
-                  <img
+                  <Image
                     src={story.image}
                     alt={story.name}
+                    height={56}
+                    width={56}
                     className="w-14 h-14 rounded-full object-cover"
                   />
 
@@ -84,6 +91,7 @@ export default function SuccessStories() {
 
               </div>
             </Card>
+            </Reveal>
           ))}
 
         </div>

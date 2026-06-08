@@ -129,7 +129,7 @@ const Navbar = () => {
                   onClick={handleDashboard}
                   className="flex items-center justify-center gap-1 cursor-pointer"
                 >
-                  <Avatar size="sm">
+                  <Avatar size="sm" className="border-2 border-accent">
                     <Avatar.Image alt="John Doe" src={user?.image} />
                     <Avatar.Fallback>JD</Avatar.Fallback>
                   </Avatar>
