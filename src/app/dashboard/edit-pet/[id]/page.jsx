@@ -20,7 +20,7 @@ const PetEditPage = async({params}) => {
 
     // console.log(id, 'from edit');
 
-    const res = await fetch(`http://localhost:5000/pet/${id}`,{
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/pet/${id}`,{
         headers: {
             authorization: `Bearer ${token}`
         }
@@ -31,7 +31,7 @@ const PetEditPage = async({params}) => {
 
     
   return (
-    <div className=" py-5">
+    <div className="py-5">
       {/* Heading */}
       <div className="py-5">
         <h1 className="font-bold text-3xl">

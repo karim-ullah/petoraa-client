@@ -7,7 +7,7 @@ import toast from "react-hot-toast";
 
 const TableRow = ({ pet, token }) => {
   const handleDelete = async () => {
-    const res = await fetch(`http://localhost:5000/adoptions/${pet._id}`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/adoptions/${pet._id}`, {
       method: "DELETE",
       headers: {
         authorization: `Bearer ${token}`,

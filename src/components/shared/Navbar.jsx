@@ -2,7 +2,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Avatar, Button, Separator } from "@heroui/react";
 import Link from "next/link";
-import { redirect, usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { ArrowRightToSquare, ChevronDown } from "@gravity-ui/icons";
 import { authClient } from "@/lib/auth-client";
 import toast from "react-hot-toast";
@@ -10,6 +10,8 @@ import Image from "next/image";
 import { ThemeToggle } from "../ThemeToggle";
 
 const Navbar = () => {
+
+  const router = useRouter()
   const { data: session } = authClient.useSession();
   const user = session?.user;
 
@@ -24,7 +26,7 @@ const Navbar = () => {
   const handleLogOut = async () => {
     await authClient.signOut();
     toast.success("Logout Successfull");
-    redirect("/");
+    window.location.href = '/'
   };
 
   const handleDashboard = (e) => {
@@ -72,7 +74,7 @@ const Navbar = () => {
   );
   return (
     <nav className="sticky top-0 z-40 w-full border-b border-separator bg-background/60 backdrop-blur-lg">
-      <header className="max-w-7xl mx-auto flex h-14 items-center justify-between px-6">
+      <header className="max-w-7xl mx-auto flex h-14 items-center justify-between px-3">
         <div className="flex items-center gap-4">
           <button
             className="md:hidden"
@@ -130,17 +132,17 @@ const Navbar = () => {
                   className="flex items-center justify-center gap-1 cursor-pointer"
                 >
                   <Avatar size="sm" className="border-2 border-accent">
-                    <Avatar.Image alt="John Doe" src={user?.image} />
+                    <Avatar.Image alt={user.name} src={user?.image} />
                     <Avatar.Fallback>JD</Avatar.Fallback>
                   </Avatar>
-                  <h3>{user?.name}</h3>
+                  <h3 className="hidden md:block">{user?.name}</h3>
                   <ChevronDown
                     className={`${isDashOpen ? "rotate-0" : "rotate-180"}`}
                   ></ChevronDown>
                 </div>
 
                 {isDashOpen && (
-                  <div className="absolute right-0 top-14 w-72 bg-background border border-gray-200 rounded-2xl shadow-xl p-5 z-50">
+                  <div className="absolute right-0 top-14 w-72 bg-background border border-gray-200 rounded-2xl shadow-xl p-5 z-50 overflow-hidden">
                     {/* User Info */}
                     <div className="flex items-center gap-4">
                       <Image
@@ -156,7 +158,7 @@ const Navbar = () => {
                           {user?.name}
                         </h2>
 
-                        <p className="text-sm text-gray-400">{user?.email}</p>
+                        <p className="text-sm text-gray-400 wrap-break-word">{user?.email}</p>
                       </div>
                     </div>
 
@@ -180,12 +182,12 @@ const Navbar = () => {
                         Profile
                       </Link>
 
-                      <button
+                      <Button
                         onClick={handleLogOut}
                         className="w-full text-left px-4 py-3 rounded-xl bg-orange-500 hover:bg-orange-600 text-white font-semibold transition"
                       >
                         Logout
-                      </button>
+                      </Button>
                     </div>
                   </div>
                 )}
@@ -206,8 +208,8 @@ const Navbar = () => {
       </header>
 
       {isMenuOpen && (
-        <div className="border-t border-separator md:hidden">
-          <ul className="flex flex-col gap-2 p-4">{links}</ul>
+        <div className="w-1/2 border-t border-separator md:hidden">
+          <ul className="flex flex-col gap-3 p-4">{links}</ul>
         </div>
       )}
     </nav>

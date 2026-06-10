@@ -8,7 +8,7 @@ const RequestAlertFooter = ({ pet, token }) => {
   const petId = pet?._id;
 
   const handleStatus = async (petId, status) => {
-    const res = await fetch(`http://localhost:5000/adoptions/status/${petId}`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/adoptions/status/${petId}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",

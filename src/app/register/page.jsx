@@ -76,7 +76,7 @@ export default function SignupPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-background px-4 py-10">
+    <div className="min-h-screen flex items-center justify-center bg-background px-3 py-10">
 
       <Card className="w-full max-w-lg shadow-2xl">
 

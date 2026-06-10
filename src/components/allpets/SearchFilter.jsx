@@ -1,9 +1,8 @@
-import Reveal from "@/Animations/Reveal";
 import { Button, SearchField } from "@heroui/react";
 
 const SearchFilter = ({search, setSearch}) => {
   return (
-    <Reveal>
+
       <div className="space-y-5 pt-10">
       <div className="text-center space-y-2">
         <h1 className="text-3xl md:text-5xl font-bold">
@@ -14,7 +13,7 @@ const SearchFilter = ({search, setSearch}) => {
         </p>
       </div>
 
-      <div className="flex items-center justify-center gap-2">
+      <div className="flex items-center justify-center gap-2 z-2">
         <SearchField name="search" className={'shadow-2xl'}>
           <SearchField.Group>
             <SearchField.SearchIcon />
@@ -28,7 +27,7 @@ const SearchFilter = ({search, setSearch}) => {
         {/* <Button size="sm">Search</Button> */}
       </div>
     </div>
-    </Reveal>
+    
   );
 };
 

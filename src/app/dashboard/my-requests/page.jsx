@@ -12,16 +12,16 @@ const MyRequestsPage = async () => {
   const {token} = await auth.api.getToken({
     headers: await headers()
   })
-  const res = await fetch(`http://localhost:5000/adoptions/${user?.id}`, {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/adoptions/${user?.id}`, {
     headers: {
       authorization: `Bearer ${token}`
     }
   });
   const pets = await res.json();
   return (
-    <div>
+    <div className="py-10">
       {/* Heading */}
-      <div className="py-5">
+      <div>
         <h1 className="font-bold text-3xl">
           My <span className="text-accent">Requests</span>
         </h1>

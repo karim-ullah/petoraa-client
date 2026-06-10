@@ -35,7 +35,7 @@ export default function HowAdoptionWorks() {
 
   return (
     <section className="py-10">
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="max-w-7xl mx-auto px-3">
         {/* Section Header */}
         <Reveal>
           <div className="text-center max-w-3xl mx-auto mb-16">

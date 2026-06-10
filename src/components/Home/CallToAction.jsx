@@ -5,7 +5,7 @@ import Reveal from "@/Animations/Reveal";
 export default function CallToAction() {
   return (
     <section className="py-10">
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="max-w-7xl mx-auto px-3">
         <Reveal>
           <div className="relative overflow-hidden rounded-4xl bg-accent p-10 md:p-16 text-white">
           {/* Content */}

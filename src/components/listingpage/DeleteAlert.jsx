@@ -8,7 +8,7 @@ import toast from "react-hot-toast";
 const DeleteAlert = ({ pet, token }) => {
   const id = pet?._id;
   const handleDelete = async () => {
-    const res = await fetch(`http://localhost:5000/pet/${id}`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/pet/${id}`, {
       method: "DELETE",
       headers: {
         authorization: `Bearer ${token}`,

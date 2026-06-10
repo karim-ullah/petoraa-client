@@ -23,7 +23,7 @@ const AdoptionForm = ({ pet }) => {
     formData.petId = id
     formData.ownerId = ownerId
 
-    const res = await fetch("http://localhost:5000/adoptions", {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/adoptions`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -44,8 +44,8 @@ const AdoptionForm = ({ pet }) => {
     }
   };
   return (
-    <div className="bg-white rounded-2xl shadow-lg p-6 h-fit sticky top-10">
-      <h2 className="text-2xl font-bold text-gray-800 mb-6">Adoption Form</h2>
+    <div className="bg-background rounded-2xl shadow-lg p-6 h-fit sticky top-10">
+      <h2 className="text-2xl font-bold text-foreground mb-6">Adoption Form</h2>
 
       <form onSubmit={handleSubmit} className="space-y-5">
         {/* Pet Name */}
@@ -57,7 +57,7 @@ const AdoptionForm = ({ pet }) => {
             name="petName"
             value={pet.petName}
             readOnly
-            className="w-full border bg-gray-100 rounded-xl px-4 py-3"
+            className="w-full border bg-background rounded-xl px-4 py-3"
           />
         </div>
 
@@ -70,7 +70,7 @@ const AdoptionForm = ({ pet }) => {
             name="userName"
             value={user?.name}
             readOnly
-            className="w-full border bg-gray-100 rounded-xl px-4 py-3"
+            className="w-full border bg-background rounded-xl px-4 py-3"
           />
         </div>
 
@@ -83,7 +83,7 @@ const AdoptionForm = ({ pet }) => {
             name="userEmail"
             value={user?.email}
             readOnly
-            className="w-full border bg-gray-100 rounded-xl px-4 py-3"
+            className="w-full border bg-background rounded-xl px-4 py-3"
           />
         </div>
 

@@ -11,7 +11,7 @@ const PetEditForm = ({user, pet, token}) => {
         const form = new FormData(e.target)
         const formData = Object.fromEntries(form.entries())
         
-        const res = await fetch(`http://localhost:5000/pet/${id}`,{
+        const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/pet/${id}`,{
             method: 'PATCH',
             headers: {
                 'Content-Type' : 'application/json',

@@ -19,7 +19,7 @@ const Addpet = () => {
 
     // Sending data to database
 
-    const res = await fetch('http://localhost:5000/pets', {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/pets`, {
       method: 'POST',
       headers:{
         'Content-Type' : 'application/json'
@@ -34,7 +34,7 @@ const Addpet = () => {
   };
     return (
         <Reveal>
-          <div className="min-h-screen py-10 px-6">
+          <div className="min-h-screen py-10 px-3">
       <div className="max-w-3xl mx-auto bg-background shadow-lg border border-accent rounded-2xl p-8">
 
         {/* Heading */}

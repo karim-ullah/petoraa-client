@@ -3,8 +3,8 @@ import { Card, Button } from "@heroui/react";
 
 export default function NoRequestsFound() {
   return (
-    <div className="max-w-2xl mx-auto shadow-sm">
-      <div className="py-16 flex flex-col items-center text-center">
+    <div className="max-w-2xl mx-auto shadow-sm border border-accent p-5 mt-5 rounded-2xl">
+      <div className="flex flex-col items-center text-center">
         
 
         {/* Heading */}
@@ -18,7 +18,7 @@ export default function NoRequestsFound() {
 
         {/* CTA */}
 
-        <Button color="warning" size="lg">
+        <Button color="warning" size="sm">
           <Link href="/all-pets" className="flex items-center gap-2">
             Browse Pets
           </Link>

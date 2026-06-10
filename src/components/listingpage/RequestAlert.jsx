@@ -13,7 +13,7 @@ const RequestAlert = ({
   setAdoptedPet,
 }) => {
   const handleModal = async (petId, token, setAdoptedPet, setIsModalOpen) => {
-    const res = await fetch(`http://localhost:5000/adoption/pet/${petId}`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/adoption/pet/${petId}`, {
       headers: {
         authorization: `Bearer ${token}`,
       },

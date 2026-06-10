@@ -3,14 +3,23 @@ import ListingCard from './ListingCard';
 
 const ListingStatsCard = async({pets, token, id}) => {
 
-const res = await fetch(`http://localhost:5000/adoptions/adopted/${id}`,{
+const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/adoptions/adopted/${id}`,{
   headers: {
     authorization: `Bearer ${token}`
   }
 })
   const myAdoptedPets = await res.json()
 
-  console.log(myAdoptedPets, 'myAdoptedPets');
+  // console.log(myAdoptedPets, 'myAdoptedPets');
+
+  const resTwo = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/adoptions/no-request/${id}`, {
+    headers: {
+      authorization: `Bearer ${token}`
+    }
+  })
+  const available = await resTwo.json()
+
+  console.log(id, 'from checking ownerpets');
 
   
     return (
@@ -27,7 +36,7 @@ const res = await fetch(`http://localhost:5000/adoptions/adopted/${id}`,{
         </div>
         <div className="border border-gray-500 rounded-2xl flex items-center justify-center p-5">
           <div className="flex flex-col items-center">
-            <span className="font-bold text-accent text-2xl">{pets?.length}</span>
+            <span className="font-bold text-accent text-2xl">{available?.length}</span>
             <span className="font-medium text-gray-500">Available</span>
           </div>
         </div>

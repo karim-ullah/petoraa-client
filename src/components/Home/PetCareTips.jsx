@@ -31,7 +31,7 @@ export default function PetCareTips() {
 
   return (
     <section className="py-10 bg-background">
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="max-w-7xl mx-auto px-3">
         {/* Heading */}
         <Reveal>
           <div className="text-center max-w-3xl mx-auto mb-16">

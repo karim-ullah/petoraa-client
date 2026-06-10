@@ -19,7 +19,7 @@ const MyListing = async () => {
 
   // console.log(token);
 
-  const res = await fetch(`http://localhost:5000/pets/${id}`, {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/pets/${id}`, {
     headers: {
       authorization: `Bearer ${token}`,
     },
@@ -32,7 +32,7 @@ const MyListing = async () => {
 
   // console.log(pets.length, 'listing page');
   return (
-    <div className=" py-5">
+    <div className="py-10">
       {/* Heading */}
       <Reveal>
         <div>

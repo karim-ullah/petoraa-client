@@ -1,3 +1,5 @@
+import OwnerNotice from "@/components/allpets/OwnerNotice";
+import AdoptedPetNotice from "@/components/detailspage/AdoptedPetNotice";
 import AdoptionForm from "@/components/detailspage/AdoptionForm";
 import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
@@ -20,7 +22,7 @@ const PetDetailsPage = async({params})=> {
     // console.log(token);
 
 
-  const res = await fetch(`http://localhost:5000/pet/${id}`,{
+  const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/pet/${id}`,{
     headers:{
       authorization: `Bearer ${token}`
     }
@@ -28,7 +30,23 @@ const PetDetailsPage = async({params})=> {
   const pet = await res.json()
 
 
-  const isOwner = pet.ownerId === user.id
+    const isOwner = pet?.ownerId === user?.id
+    const petId = pet?._id
+
+
+
+  const resTwo = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/adoption/pet/${petId}`, {
+    headers: {
+      authorization : `Bearer ${token}`
+    }
+  })
+
+  const adoptPet = await resTwo.json()
+
+  const isStatusApproved = adoptPet?.status === 'approved'
+
+  // console.log(adoptPet, 'same or not');
+
   
 
   
@@ -39,7 +57,7 @@ const PetDetailsPage = async({params})=> {
   return (
     <div className="bg-background py-10">
 
-      <div className="max-w-7xl mx-auto grid lg:grid-cols-3 gap-8 px-6">
+      <div className="max-w-7xl mx-auto grid lg:grid-cols-3 gap-8 px-3">
 
         {/* Left Side - Pet Details */}
         <div className="lg:col-span-2 bg-background rounded-2xl shadow-lg overflow-hidden">
@@ -124,8 +142,9 @@ const PetDetailsPage = async({params})=> {
 
       {
         isOwner ? <div>
-          <p className="text-accent">this is your added pet</p> 
+          <OwnerNotice></OwnerNotice>
         </div>
+        : isStatusApproved ? <div><AdoptedPetNotice></AdoptedPetNotice></div>
         :
         <AdoptionForm pet = {pet}></AdoptionForm>
       }

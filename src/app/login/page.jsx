@@ -1,80 +1,64 @@
-'use client';
+"use client";
 
 import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
-import {
-  Card,
-  Input,
-  Button,
-} from "@heroui/react";
+import { Card, Input, Button } from "@heroui/react";
 
 import { toast } from "react-hot-toast";
 import { authClient } from "@/lib/auth-client";
+import { Icon } from "@iconify/react";
 
 export default function LoginPage() {
-
   const router = useRouter();
 
   const [loading, setLoading] = useState(false);
 
   const handleLogin = async (e) => {
-    e.preventDefault()
-    const formData = new FormData(e.target)
-    const dataForm = Object.fromEntries(formData.entries())
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    const dataForm = Object.fromEntries(formData.entries());
 
-    console.log(dataForm.email);
+    // console.log(dataForm.email);
 
-    const {data, error} = await authClient.signIn.email({
+    const { data, error } = await authClient.signIn.email({
       email: dataForm.email,
       password: dataForm.password,
       rememberMe: true,
-    })
+    });
 
-    console.log(data);
+    // console.log(data);
 
-    if(data){
-      toast.success('Login Success')
-      router.push('/')
+    if (data) {
+      toast.success("Login Success");
+      window.location.href = '/'
+      
     }
-    if(error){
-      toast.error('Email or Password is not valid')
+    if (error) {
+      toast.error("Email or Password is not valid");
     }
+  };
 
-    
-  }
-
-    
   const handleGoogleLogin = async () => {
-
-   
+    await authClient.signIn.social({
+      provider: 'google'
+    })
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-background px-4">
-
+    <div className="min-h-screen flex items-center justify-center bg-background px-3">
       <Card className="w-full max-w-md shadow-2xl p-2">
-
         <div className="p-8">
-
           {/* Heading */}
           <div className="text-center mb-8">
-            <h1 className="text-4xl font-bold">
-              Welcome Back
-            </h1>
+            <h1 className="text-4xl font-bold">Welcome Back</h1>
 
-            <p className="text-gray-500 mt-2">
-              Login to continue
-            </p>
+            <p className="text-gray-500 mt-2">Login to continue</p>
           </div>
 
           {/* Form */}
-          <form
-            onSubmit={handleLogin}
-            className="space-y-5"
-          >
-
+          <form onSubmit={handleLogin} className="space-y-5">
             {/* Email */}
             <Input
               type="email"
@@ -83,7 +67,7 @@ export default function LoginPage() {
               placeholder="Enter your email"
               variant="bordered"
               required
-              className={'w-full'}
+              className={"w-full"}
             />
 
             {/* Password */}
@@ -94,7 +78,7 @@ export default function LoginPage() {
               placeholder="Enter your password"
               variant="bordered"
               required
-              className={'w-full'}
+              className={"w-full"}
             />
 
             {/* Login Button */}
@@ -106,41 +90,35 @@ export default function LoginPage() {
             >
               Login
             </Button>
-
           </form>
 
           {/* Divider */}
           <div className="flex items-center gap-3 my-6">
             <div className="flex-1 h-[1px] bg-gray-300"></div>
 
-            <span className="text-sm text-gray-500">
-              OR
-            </span>
+            <span className="text-sm text-gray-500">OR</span>
 
             <div className="flex-1 h-[1px] bg-gray-300"></div>
           </div>
 
           {/* Google Login */}
+
           <Button
-            variant="bordered"
-            className="w-full"
             onPress={handleGoogleLogin}
+            className="w-full"
+            variant="tertiary"
           >
-            Continue with Google
+            <Icon icon="devicon:google" />
+            Sign in with Google
           </Button>
 
           {/* Register Link */}
           <p className="text-center text-sm text-gray-500 mt-6">
             Don&apos;t have an account?{" "}
-
-            <Link
-              href="/register"
-              className="text-orange-500 font-semibold"
-            >
+            <Link href="/register" className="text-orange-500 font-semibold">
               Register
             </Link>
           </p>
-
         </div>
       </Card>
     </div>

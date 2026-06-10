@@ -35,7 +35,7 @@ export default function SuccessStories() {
 
   return (
     <section className="py-10 max-w-7xl mx-auto px-6">
-      <div className="max-w-7xl mx-auto px-4">
+      <div className="max-w-7xl mx-auto px-3">
 
         {/* Heading */}
         <Reveal>

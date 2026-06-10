@@ -5,7 +5,7 @@ import Link from "next/link";
 export default function NoPetsFound() {
   return (
     <Reveal>
-      <div className="flex flex-col items-center justify-center text-center py-16 px-6">
+      <div className="flex flex-col items-center justify-center text-center py-16 px-3">
       
       {/* Icon */}
       <div className="text-6xl mb-4">🐾</div>

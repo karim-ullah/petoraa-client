@@ -4,11 +4,11 @@ import PetCard from "../shared/PetCard";
 
 const FeaturedPetSection = async() => {
 
-    const res = await fetch('http://localhost:5000/pets')
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/pets`)
     const pets = await res.json()
 
   return (
-    <div className="max-w-7xl mx-auto px-6">
+    <div className="max-w-7xl mx-auto px-3">
 
       <Reveal>
         <div className="text-center max-w-2xl mx-auto mb-12">

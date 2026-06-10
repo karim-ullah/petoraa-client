@@ -4,8 +4,8 @@ import { Plus } from "@gravity-ui/icons";
 
 export default function NoListingsFound() {
   return (
-    <div className="max-w-2xl mx-auto py-5">
-      <div className="py-16 flex flex-col items-center text-center">
+    <div className="max-w-2xl mx-auto p-5 mt-5 border border-accent rounded-2xl">
+      <div className="flex flex-col items-center text-center">
 
         {/* Illustration/Icon */}
         <div className="w-24 h-24 rounded-full bg-warning-50 flex items-center justify-center mb-6">

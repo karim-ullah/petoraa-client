@@ -12,33 +12,38 @@ const AllPets = () => {
   const [species, setSpecies] = useState("");
 
   useEffect(() => {
-    fetch(`http://localhost:5000/pets?search=${search}&species=${species}`)
+    fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/pets?search=${search}&species=${species}`)
       .then((res) => res.json())
       .then((data) => setPets(data));
   }, [search, species]);
 
-  //   const res = await fetch("http://localhost:5000/pets");
-  //   const pets = await res.json();
-  // console.log(pets);
+  
 
   return (
-    <div className="max-w-7xl md:w-7xl px-6 mx-auto min-h-screen">
+    <div className="max-w-7xl px-3 mx-auto min-h-screen">
 
-      <SearchFilter search={search} setSearch={setSearch}></SearchFilter>
-      <div className="w-full flex items-center justify-between gap-10 pt-10">
-        <Reveal>
-          <div>
+      <div className="w-full">
+        <Reveal><SearchFilter search={search} setSearch={setSearch}></SearchFilter></Reveal>
+      </div>
+
+      <div className="flex justify-between pt-10">
+        <div className="text-left"><Reveal>
+          
           <h3 className="font-semibold">
             All pets <span className="text-accent">({pets.length})</span>
           </h3>
-        </div>
-        </Reveal>
+        
+        </Reveal></div>
         <div>
           <Filter species={species} setSpecies={setSpecies}></Filter>
         </div>
       </div>
 
-      {pets.length > 0 ? 
+
+      {/* petcard and nopetcard */}
+
+      
+        {pets.length > 0 ? 
       
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-5 pb-10">
         {pets.map((pet) => (
@@ -48,8 +53,9 @@ const AllPets = () => {
 
       : 
 
-      <div className="w-96 flex items-center justify-center mx-auto"><NoPetsFound> </NoPetsFound></div>
+      <div className="w-full max-w-96 flex items-center justify-center mx-auto"><NoPetsFound> </NoPetsFound></div>
     }
+      
     </div>
   );
 };

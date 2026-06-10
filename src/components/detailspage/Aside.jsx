@@ -1,6 +1,7 @@
 "use client";
 import { authClient } from "@/lib/auth-client";
 import { CodePullRequestArrowRight, SquareListUl } from "@gravity-ui/icons";
+import { Button } from "@heroui/react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
@@ -10,57 +11,31 @@ const Aside = () => {
   const { data: session } = authClient.useSession();
   const user = session?.user;
 
-  const navLinks = [
-    {
-      name: "My Requests",
-      path: `/dashboard/my-requests`,
-    },
-    {
-      name: "Add Pet",
-      path: `/dashboard/add-pet`,
-    },
-    {
-      name: "My Listings",
-      path: `/dashboard/my-listing`,
-    },
-  ];
   return (
-    <aside className=" bg-background md:shadow-lg md:border-r pt-5 md:p-6 h-full">
+    <aside className="bg-background md:shadow-lg md:border-r px-0 md:px-5 py-5 md:min-h-full">
       {/* Logo */}
       <div className="mb-10">
         <h1 className="text-xl font-semibold text-accent">Dashboard</h1>
       </div>
 
       {/* Navigation */}
-      <nav className="space-y-3 grid grid-cols-3 justify-items-center md:justify-items-start md:grid-cols-1 gap-2">
-        {navLinks.map((link) => {
-          const isActive = pathname === link.path;
 
-          return (
-            <div key={link.path}>
-              <Link
-                href={link.path}
-                className={`px-2 md:px-4 py-2 md:py-3 rounded-xl font-medium transition flex items-center gap-1
-                          
-                          ${
-                            isActive
-                              ? "bg-accent text-foreground"
-                              : "text-gray-700 hover:bg-orange-100"
-                          }
-                        `}
-              >
-                {link.name === "My Requests" ? (
-                  <CodePullRequestArrowRight></CodePullRequestArrowRight>
-                ) : link.name === "Add Pet" ? (
-                  "+"
-                ) : (
-                  <SquareListUl />
-                )}{" "}
-                {link.name}
-              </Link>
-            </div>
-          );
-        })}
+      <nav className="flex flex-row md:flex-col gap-1 sm:gap-2 items-center justify-between md:justify-items-normal md:items-start">
+        <Button
+          className={`w-full ${pathname === "/dashboard/my-requests" ? "bg-accent text-gray-100" : "text-gray-700 hover:text-gray-700"}`}
+        >
+          <Link className="flex items-center gap-2" href={"/dashboard/my-requests"}><CodePullRequestArrowRight></CodePullRequestArrowRight> My Requests</Link>
+        </Button>
+        <Button
+          className={`w-full ${pathname === "/dashboard/add-pet" ? "bg-accent text-gray-100" : "text-gray-700 hover:text-gray-700"}`}
+        >
+          <Link className="flex items-center gap-2" href={"/dashboard/add-pet"}>+ Add Pet</Link>
+        </Button>
+        <Button
+          className={`w-full ${pathname === "/dashboard/my-listing" ? "bg-accent text-gray-100" : "text-gray-700 hover:text-gray-700"}`}
+        >
+          <Link className="flex items-center gap-2" href={"/dashboard/my-listing"}><SquareListUl></SquareListUl> My Listings</Link>
+        </Button>
       </nav>
     </aside>
   );

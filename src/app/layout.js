@@ -18,10 +18,10 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
-      className={`${poppins.className} h-full antialiased`}
+      className={`${poppins.className} antialiased`}
       suppressHydrationWarning
     >
-      <body className="min-h-full flex flex-col bg-background text-foreground">
+      <body className="min-h-full bg-background text-foreground overflow-x-hidden">
         <NextThemesProvider>
           <Navbar></Navbar>
           {children}
